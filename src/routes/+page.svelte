@@ -1,3 +1,7 @@
+<script>
+	//const test = "test"
+</script>
+
 <svelte:head>
 	<title>Home Page</title>
 </svelte:head>
@@ -6,8 +10,8 @@
 	<div class="hero">
 		<h2 class="heading-2">What do you want to do Today?</h2>
 		<main class="cards">
-			<div class="button"><a href="/liveSession">Track my session</a></div>
-			<div class="button"><a href="/history">View previous statistics</a></div>
+			<a href="/liveSession"><div class="button">Track my session</div></a>
+			<a href="/history"><div class="button">View previous statistics</div></a>
 		</main>
 	</div>
 	<div class="about">
@@ -59,7 +63,7 @@
 		font-weight: 300;
 	}
 
-	.button a {
+	.cards a {
 		color: var(--text);
 		font-weight: var(--fw-bold);
 		text-decoration: none;
