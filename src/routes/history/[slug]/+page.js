@@ -3,6 +3,9 @@
 export function load() {
     let params = new URLSearchParams(document.location.search);
     let slug = params.get("id")
+    if (slug === null) {
+        slug = ''
+    }
     return {
         slug
     }
