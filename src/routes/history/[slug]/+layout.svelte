@@ -5,6 +5,8 @@
 	 *@type {[]}
 	 */
 	let last_10_sessions;
+
+	//TODO: make this sidebar toggle-able
 </script>
 
 <div class="columns">
