@@ -207,3 +207,41 @@ body {
 
   color: var(--clr-secondary-500);
 }
+
+.btn-primary {
+  padding: 0.75rem;
+  margin: 25px;
+  background-color: var(--primary-400);
+  color: var(--text);
+
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--border);
+  border-radius: 7px;
+
+  font-weight: 300;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-500);
+}
+
+.btn-secondary {
+  padding: 0.75rem;
+  margin: 25px;
+  background-color: var(--secondary-500);
+  color: var(--text-light);
+
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--border);
+  border-radius: 7px;
+
+  font-weight: 300;
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-400);
+}
+
+/* ----Utility Classes--- */

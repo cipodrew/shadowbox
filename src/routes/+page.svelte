@@ -1,5 +1,7 @@
 <script>
 	//const test = "test"
+
+	import Button from '$lib/components/Button.svelte';
 </script>
 
 <svelte:head>
@@ -10,8 +12,8 @@
 	<div class="hero">
 		<h2 class="heading-2">What do you want to do Today?</h2>
 		<main class="cards">
-			<a href="/liveSession"><div class="button">Track my session</div></a>
-			<a href="/history"><div class="button">View previous statistics</div></a>
+			<a href="/liveSession"><Button variant="primary">Track my session</Button></a>
+			<a href="/history"><Button variant="secondary">View previous statistics</Button></a>
 		</main>
 	</div>
 	<div class="about">
@@ -49,28 +51,11 @@
 		/* grid-template-rows: repeat(1fr); */
 		place-items: center;
 	}
-	.button {
-		padding: 0.75rem;
-		margin: 25px;
-		background-color: var(--primary-400);
-		color: var(--text);
-
-		border-style: solid;
-		border-width: 2px;
-		border-color: var(--border);
-		border-radius: 7px;
-
-		font-weight: 300;
-	}
 
 	.cards a {
 		color: var(--text);
 		font-weight: var(--fw-bold);
 		text-decoration: none;
-	}
-
-	.button:hover {
-		background-color: var(--primary-500);
 	}
 
 	@media (min-width: 600px) {
