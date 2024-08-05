@@ -1,13 +1,9 @@
 //get slug from URL (id calcolato dalla data temporale di una delle sessioni) e ritornanlo per renderlo disponibile alla pagina
 
-export function load() {
-    let params = new URLSearchParams(document.location.search);
-    let slug = params.get("id")
-    if (slug === null) {
-        slug = ''
-    }
+export function load({ params }) {
+
     return {
-        slug
+        slug: params.slug
     }
-    //Attenzione!!!! prob basta usare page store   
+    //in alternativa si può usare page store direttamente nella pagina 
 }
