@@ -13,4 +13,6 @@ type Packet = {
     reading: Reading
 }
 
+type TrainingStatus = "not started" | "in progress" | "done"
+
 export const Types = {}

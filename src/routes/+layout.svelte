@@ -11,6 +11,8 @@
 </nav>
 {@render children()}
 
+<!-- <div class="footer">Site footer</div> -->
+
 <style>
 	nav {
 		display: flex;
@@ -18,6 +20,8 @@
 		justify-content: center;
 		gap: 20px;
 		flex-wrap: wrap;
+
+		margin-bottom: 10px;
 
 		font-size: 1.25rem;
 		font-weight: var(--fw-medium);
@@ -30,4 +34,11 @@
 	a:hover {
 		opacity: 80%;
 	}
+
+	/* .footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 10;
+	} */
 </style>
