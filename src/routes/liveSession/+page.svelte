@@ -10,6 +10,8 @@
 	 */
 	//TODO: controllare se server funzione da passare a componente per fare push di readings o basta passare le reading direttamente
 	let readings = $state([
+		'1',
+		'2',
 		'hi',
 		'yo',
 		'hi',
@@ -27,6 +29,7 @@
 		'hi',
 		'yo'
 	]);
+	// let invertedReadings = $derived(readings.reverse);
 
 	let canStart = $state(false);
 	/**
@@ -51,8 +54,15 @@
 		<button class="btn-primary" disabled={!canStart} onclick={startTraining}>Start Traning</button>
 		<div class="best">Your best punch this session was:</div>
 		<div class="readings-feed">
+			<button
+				class="btn-secondary"
+				onclick={() => {
+					readings.unshift('hello!');
+				}}>Add a synthetic reading</button
+			>
 			Readings above treshold:
 			<ul>
+				<!-- {#each readings.toReversed() as reading} -->
 				{#each readings as reading}
 					<li>{reading}</li>
 				{/each}
