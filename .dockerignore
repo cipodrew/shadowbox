@@ -1,0 +1,15 @@
+.git*
+node_modules
+Dockerfile
+.dockerignore
+docker-compose.yml
+.svelte-kit
+README.md
+.npmrc
+.prettier*
+.eslint*
+.editorconfig
+.vscode
+build
+package
+**/.env
