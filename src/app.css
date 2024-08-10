@@ -157,9 +157,9 @@ html:focus-within {
 
 html {
   /*segue preferenze del browser*/
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
   /*forza light theme*/
-  /* color-scheme: light; */
+  color-scheme: light;
 }
 
 /*

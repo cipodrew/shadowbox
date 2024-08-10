@@ -12,8 +12,8 @@
 	<div class="hero">
 		<h2 class="heading-2">What do you want to do Today?</h2>
 		<main class="cards">
-			<a href="/liveSession"><Button variant="primary">Track my session</Button></a>
-			<a href="/history"><Button variant="secondary">View previous statistics</Button></a>
+			<a href="/liveSession" class="btn-primary">Track my session</a>
+			<a href="/history" class="btn-secondary">View previous statistics</a>
 		</main>
 	</div>
 	<div class="about">
