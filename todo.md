@@ -1,0 +1,4 @@
+- Completare logica live session
+- Ottenere dati etc
+- Salvare un sessione di allenamento in local storage
+- Creare le pagine slug di ogni allenamento passato

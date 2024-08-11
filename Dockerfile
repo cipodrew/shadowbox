@@ -2,11 +2,12 @@ FROM node:20-bookworm
 
 WORKDIR /app
 COPY package.json package-lock.json ./
-# RUN npm ci ## if you want to delete previous node_modules
-RUN npm install
+# RUN npm install
+# npm installa la versione esatta definita nel package-lock e distrugge eventuali node modules giá presenti
+RUN npm ci
 COPY . .
 
-## prod
+## prod simulation
 RUN npm run build
 CMD ["node", "build"]
 ##

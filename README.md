@@ -1,6 +1,13 @@
 ## For reference:
 project started on Node 20.12.2
 
+## Running the docker container
+```bash
+usage: docker build -t sveltekit-shadowbox-dev
+docker run -p 3000:3000 sveltekit-shadowbox-dev
+```
+open browser on localhost 3000
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
