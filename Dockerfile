@@ -7,18 +7,21 @@ COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 
+ENV PORT=4000
+# ENV HOST=127.0.0.1
 ## prod simulation
 RUN npm run build
+RUN npm prune --production
 CMD ["node", "build"]
 ##
 
 ## dev
 # CMD ["npm", "run", "dev"]
 ##
-EXPOSE 3000
+EXPOSE 4000
 # usage: docker build -t sveltekit-shadowbox-dev
-# docker run -p 3000:3000 sveltekit-shadowbox-dev
-# open browser on localhost 3000
+# docker run -p 4000:4000 sveltekit-shadowbox-dev
+# open browser on localhost 4000
 
 
 

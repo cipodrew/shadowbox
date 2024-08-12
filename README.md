@@ -2,11 +2,12 @@
 project started on Node 20.12.2
 
 ## Running the docker container
+usage:
 ```bash
-usage: docker build -t sveltekit-shadowbox-dev
-docker run -p 3000:3000 sveltekit-shadowbox-dev
+docker build -t sveltekit-shadowbox-dev .
+docker run -p 4000:4000 sveltekit-shadowbox-dev
 ```
-open browser on localhost 3000
+open browser on localhost 4000
 
 # create-svelte
 
