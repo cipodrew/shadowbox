@@ -1,4 +1,6 @@
 <script>
+	import { onMount } from 'svelte';
+
 	// import * as Types from "$lib/myTypes.js"
 	// import * from "$lib/myTypes.js"
 	/**
@@ -12,7 +14,10 @@
 
 	const slug = data.slug;
 
-	let storage = localStorage.getItem('historyMap');
+	let storage;
+	onMount(() => {
+		localStorage.getItem('historyMap');
+	});
 	/**
 	 * @type {Map<string,Training> | undefined}
 	 */

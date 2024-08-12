@@ -11,6 +11,7 @@
 
 <div class="columns">
 	<section>
+		<button class="btn-primary">Collapse</button>
 		Your latest 10 trainings:
 		<ul>
 			<a href=""> <li>Training of 2024-08-2=02</li></a>
