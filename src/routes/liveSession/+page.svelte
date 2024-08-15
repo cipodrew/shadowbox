@@ -84,13 +84,23 @@
 					readings.unshift('hello!');
 				}}>Add a synthetic reading</button
 			>
-			Readings above treshold:
-			<ul>
+			<h2>Readings above treshold:</h2>
+			<div class="readings-grid">
 				<!-- {#each readings.toReversed() as reading} -->
+				<div class="grid-header-item">module</div>
+				<div class="grid-header-item">hand</div>
+				<div class="grid-header-item">xAccel</div>
+				<div class="grid-header-item">yAccel</div>
+				<div class="grid-header-item">zAccel</div>
 				{#each readings as reading}
-					<li>{reading}</li>
+					<!--					<li>{reading}</li> -->
+					<div class="reading-item">{reading}</div>
+					<div class="reading-item">R</div>
+					<div class="reading-item">2</div>
+					<div class="reading-item">3</div>
+					<div class="reading-item">1</div>
 				{/each}
-			</ul>
+			</div>
 		</div>
 		<div class="graph">
 			<p>Graph</p>
@@ -121,5 +131,34 @@
 		width: 100%;
 		background-color: var(--accent-300);
 		text-align: center;
+	}
+	/*.readings-grid {*/
+	/*	display: flex;*/
+	/*	flex-direction: row;*/
+	/*	gap: 20px;*/
+	/*	overflow-x: auto;*/
+	/*}*/
+	.readings-grid {
+		display: grid;
+		grid-auto-flow: row;
+		/*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
+		grid-template-columns: repeat(5, 1fr);
+		gap: 20px;
+
+		text-align: center;
+	}
+
+	/*.grid-header {*/
+	/*	display: flex;*/
+	/*	background-color: var(--accent-300);*/
+	/*	gap: 20px;*/
+	/*}*/
+	/*.reading {*/
+	/*	display: flex;*/
+	/*	flex-grow: inherit;*/
+	/*	gap: 20px;*/
+	/*}*/
+	.grid-header-item {
+		background-color: var(--accent-200);
 	}
 </style>
