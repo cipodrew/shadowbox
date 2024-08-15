@@ -3,6 +3,7 @@ type Training = {
     xAccelReadings: int[]
 }
 type Reading = {
+    side: "R" | "L"
     xAccel: number
     yAccel: number
     zAccel: number

@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import Crono from './Crono.svelte';
 	import WSdashboard from './WSdashboard.svelte';
 	/**
@@ -30,6 +31,29 @@
 		'yo'
 	]);
 	// let invertedReadings = $derived(readings.reverse);
+
+	// const READINGS_KEY = 'readings_key';
+	/*  save every single reading or only on training end? 
+	maybe save readings until training end for recovery and delete them on traning end
+	(on traning end we save the whole traning info) */
+	// $effect(function saveLocal() {
+	// 	localStorage.setItem(READINGS_KEY, JSON.stringify(readings));
+	// });
+
+	onMount(() => {
+		return function cleanup() {
+			if (trainingStatus === 'in progress') {
+				/* prompt user for confirmation on leaving */
+				alert('Do you really want to leave? Your progress will be lost!');
+			}
+		};
+	});
+
+	function endTraning() {
+		saveTraning();
+	}
+
+	function saveTraning() {}
 
 	let canStart = $state(false);
 	/**
