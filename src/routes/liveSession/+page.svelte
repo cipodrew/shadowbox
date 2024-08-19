@@ -7,6 +7,14 @@
 	 */
 
 	/**
+	 * @type WebSocket | undefined
+	 */
+	let sock = $state();
+	///**
+	// * @type number
+	// */ let sockState;
+
+	/**
 	 * @type {string[]}
 	 */
 	//TODO: controllare se server funzione da passare a componente per fare push di readings o basta passare le reading direttamente
@@ -50,12 +58,14 @@
 	});
 
 	function endTraning() {
+		//TODO:
 		saveTraning();
 	}
 
-	function saveTraning() {}
+	function saveTraning() {} //TODO:
 
-	let canStart = $state(false);
+	//let canStart = $state(true);
+	let canStart = $derived(sock?.readyState === 1); //true se socket é connessa
 	/**
 	 * @type {TrainingStatus}
 	 */
@@ -65,7 +75,7 @@
 	 * @param {MouseEvent & { currentTarget: EventTarget & HTMLButtonElement; }} event
 	 */
 	function startTraining(event) {
-		throw new Error('Function not implemented.');
+		trainingStatus = 'in progress';
 	}
 </script>
 
@@ -73,10 +83,13 @@
 	<title>Live Session</title>
 </svelte:head>
 <div class="wrapper">
-	<WSdashboard {readings} />
+	<WSdashboard {readings} {sock} />
 	<main class="stats-dashboard">
 		<button class="btn-primary" disabled={!canStart} onclick={startTraining}>Start Traning</button>
-		<div class="best">Your best punch this session was:</div>
+		<div class="best">
+			<h2>Current best:</h2>
+			<div class="best">1 R 2 3 1</div>
+		</div>
 		<div class="readings-feed">
 			<button
 				class="btn-secondary"
@@ -86,19 +99,22 @@
 			>
 			<h2>Readings above treshold:</h2>
 			<div class="readings-grid">
-				<!-- {#each readings.toReversed() as reading} -->
 				<div class="grid-header-item">module</div>
 				<div class="grid-header-item">hand</div>
 				<div class="grid-header-item">xAccel</div>
 				<div class="grid-header-item">yAccel</div>
 				<div class="grid-header-item">zAccel</div>
-				{#each readings as reading}
+				<div class="grid-header-item">punch N°</div>
+				<!-- {#each readings.toReversed() as reading, i } if using push instead of unshift -->
+				{#each readings as readingModule, i}
 					<!--					<li>{reading}</li> -->
-					<div class="reading-item">{reading}</div>
+					<div class="reading-item">{readingModule}</div>
 					<div class="reading-item">R</div>
 					<div class="reading-item">2</div>
 					<div class="reading-item">3</div>
 					<div class="reading-item">1</div>
+					<div class="reading-item">{Math.abs(i - readings.length)}</div>
+					<!--add number of reading? -->
 				{/each}
 			</div>
 		</div>
@@ -109,8 +125,8 @@
 	</main>
 	<div class="dashboard-footer">
 		<!-- Rate your tiredness <br /> -->
-		Time since session start:
-		<Crono />
+		Time since session start: <span>{trainingStatus}</span>
+		<Crono {trainingStatus} />
 	</div>
 </div>
 
@@ -142,7 +158,7 @@
 		display: grid;
 		grid-auto-flow: row;
 		/*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: repeat(6, 1fr);
 		gap: 20px;
 
 		text-align: center;

@@ -3,19 +3,12 @@
 	import Button from '$lib/components/Button.svelte';
 	import { onMount } from 'svelte';
 
-	/** @type {{ readings: string[] }} */
-	let { readings } = $props();
+	/** @type {{ readings: string[] , sock: WebSocket | undefined}}
+} */
+	let { readings, sock } = $props();
 
 	let localIP = $state('');
 	let wsPort = $state('');
-
-	/**
-	 * @type WebSocket | undefined
-	 */
-	let sock = $state();
-	/**
-	 * @type number
-	 */ let sockState;
 
 	// $inspect(sock);
 	onMount(() => {

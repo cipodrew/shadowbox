@@ -222,6 +222,15 @@ body {
   font-weight: 300;
 }
 
+button {
+  cursor: pointer;
+  transition: transform ease 0.2s;
+}
+
+button:active {
+  transform: translate(0, -3px);
+}
+
 .btn-primary:hover {
   background-color: var(--primary-500);
 }
