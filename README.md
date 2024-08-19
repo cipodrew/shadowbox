@@ -4,9 +4,10 @@ project started on Node 20.12.2
 ## Running the docker container
 usage:
 ```bash
-docker build -t sveltekit-shadowbox-dev .
-docker run -p 4000:4000 sveltekit-shadowbox-dev
+docker build -t sveltekit-shadowbox-dev:latest .  && \
+docker run --name=svelte-shadowbox -p 4000:4000 sveltekit-shadowbox-dev
 ```
+add -d to the run command to launch the container in detached mode
 open browser on localhost 4000
 
 # create-svelte
