@@ -2,8 +2,12 @@
 	import { onMount } from 'svelte';
 	import Crono from './Crono.svelte';
 	import WSdashboard from './WSdashboard.svelte';
+	import { read } from '$app/server';
 	/**
 	 * @typedef {import('$lib/myTypes.js').TrainingStatus} TrainingStatus
+	 */
+	/**
+	 * @typedef {import('$lib/myTypes.js').Reading} Reading
 	 */
 
 	/**
@@ -15,28 +19,30 @@
 	// */ let sockState;
 
 	/**
-	 * @type {string[]}
+	 * @type {Reading[]}
 	 */
 	//TODO: controllare se server funzione da passare a componente per fare push di readings o basta passare le reading direttamente
 	let readings = $state([
-		'1',
-		'2',
-		'hi',
-		'yo',
-		'hi',
-		'yo',
-		'hi',
-		'yo',
-		'hi',
-		'yo',
-		'hi',
-		'yo',
-		'hi',
-		'yo',
-		'hi',
-		'yo',
-		'hi',
-		'yo'
+		{
+			side: 'R',
+			module: 1,
+			xAccel: 9.81,
+			yAccel: 0.0,
+			zAccel: -9.81
+		},
+		{
+			side: 'L',
+			xAccel: 3.5,
+			yAccel: 4.2,
+			zAccel: 1.1
+		},
+		{
+			side: 'R',
+			module: 2,
+			xAccel: -1.5,
+			yAccel: 2.3,
+			zAccel: 0.0
+		}
 	]);
 	// let invertedReadings = $derived(readings.reverse);
 
@@ -77,6 +83,26 @@
 	function startTraining(event) {
 		trainingStatus = 'in progress';
 	}
+
+	// /**
+	//  *@type {{currentBest: Reading, index: number} | undefined}
+	//  */
+	// let { currentBest, index } = $state();
+
+	// /**
+	//  *
+	//  * @param {Reading[]} readings
+	//  * @returns {{currentBest:Reading, index: number}}
+	//  */
+	// function bestPunch(readings) {
+	// 	for (let i = 0; i < readings.length; i++) {
+	// 		let currentReading = readings[i];
+	// 		if (currentBest === undefined || currentReading?.module > currentBest?.module) {
+	// 			currentBest = currentReading;
+	// 			return { currentBest: currentBest, index: Math.abs(i - readings.length) };
+	// 		}
+	// 	}
+	// }
 </script>
 
 <svelte:head>
@@ -89,12 +115,32 @@
 		<div class="best">
 			<h2>Current best:</h2>
 			<div class="best">1 R 2 3 1</div>
+			<!-- {#if currentBest}
+				<div class="grid-best-item">module</div>
+				<div class="grid-best-item">hand</div>
+				<div class="grid-best-item">xAccel</div>
+				<div class="grid-best-item">yAccel</div>
+				<div class="grid-best-item">zAccel</div>
+				<div class="grid-best-item">punch N°</div>
+				<div class="best-item">{currentBest.module}</div>
+				<div class="best-item">{currentBest.side}</div>
+				<div class="best-item">{currentBest.xAccel}</div>
+				<div class="best-item">{currentBest.yAccel}</div>
+				<div class="best-item">{currentBest.zAccel}</div>
+				<div class="best-item">{Math.abs(index - readings.length)}</div>
+			{/if} -->
 		</div>
 		<div class="readings-feed">
 			<button
 				class="btn-secondary"
 				onclick={() => {
-					readings.unshift('hello!');
+					readings.unshift({
+						side: 'R',
+						module: 2,
+						xAccel: -1.5,
+						yAccel: 2.3,
+						zAccel: 0.0
+					});
 				}}>Add a synthetic reading</button
 			>
 			<h2>Readings above treshold:</h2>
@@ -106,13 +152,13 @@
 				<div class="grid-header-item">zAccel</div>
 				<div class="grid-header-item">punch N°</div>
 				<!-- {#each readings.toReversed() as reading, i } if using push instead of unshift -->
-				{#each readings as readingModule, i}
+				{#each readings as reading, i}
 					<!--					<li>{reading}</li> -->
-					<div class="reading-item">{readingModule}</div>
-					<div class="reading-item">R</div>
-					<div class="reading-item">2</div>
-					<div class="reading-item">3</div>
-					<div class="reading-item">1</div>
+					<div class="reading-item">{reading.module}</div>
+					<div class="reading-item">{reading.side}</div>
+					<div class="reading-item">{reading.xAccel}</div>
+					<div class="reading-item">{reading.yAccel}</div>
+					<div class="reading-item">{reading.zAccel}</div>
 					<div class="reading-item">{Math.abs(i - readings.length)}</div>
 					<!--add number of reading? -->
 				{/each}
