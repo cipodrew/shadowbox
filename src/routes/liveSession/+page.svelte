@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import Crono from './Crono.svelte';
 	import WSdashboard from './WSdashboard.svelte';
-	import { read } from '$app/server';
 	/**
 	 * @typedef {import('$lib/myTypes.js').TrainingStatus} TrainingStatus
 	 */
@@ -32,6 +31,7 @@
 		},
 		{
 			side: 'L',
+			module: 1.4,
 			xAccel: 3.5,
 			yAccel: 4.2,
 			zAccel: 1.1
@@ -85,50 +85,85 @@
 	}
 
 	// /**
-	//  *@type {{currentBest: Reading, index: number} | undefined}
+	//  * @typedef currentBest
+	//  * @property {Reading | undefined} reading
+	//  * @property {number} index
 	//  */
-	// let { currentBest, index } = $state();
+	// /** @type {currentBest|undefined} */
+	// let currentBest = $state({undefined,-1});
 
 	// /**
 	//  *
 	//  * @param {Reading[]} readings
-	//  * @returns {{currentBest:Reading, index: number}}
+	//  * @returns {currentBest | undefined}
 	//  */
 	// function bestPunch(readings) {
 	// 	for (let i = 0; i < readings.length; i++) {
 	// 		let currentReading = readings[i];
-	// 		if (currentBest === undefined || currentReading?.module > currentBest?.module) {
-	// 			currentBest = currentReading;
-	// 			return { currentBest: currentBest, index: Math.abs(i - readings.length) };
+	// 		if (currentBest === undefined || currentReading?.module > currentBest?.reading.module) {
+	// 			currentBest.reading = currentReading;
+	// 			currentBest.index = Math.abs(i - readings.length);
+	// 			return currentBest;
 	// 		}
 	// 	}
+	// 	return undefined;
 	// }
+
+	/**
+	 * @param {Reading[]} readings
+	 * @returns {number}
+	 */
+	function findMax(readings) {
+		let currentMax = 0;
+		let index = -1;
+		for (let i = 0; i < readings.length; i++) {
+			let currentReading = readings[i];
+			if (currentReading?.module > currentMax) {
+				currentMax = currentReading?.module;
+				index = Math.abs(i - readings.length);
+				return index;
+			}
+		}
+		console.log(index);
+		return index;
+	}
+
+	/**
+	 * @type Reading
+	 */
+	let best = $derived.by(function findMax() {
+		return readings.reduce((max, current) => {
+			return current.module > max.module ? current : max;
+		}, readings[0]);
+	});
 </script>
 
 <svelte:head>
 	<title>Live Session</title>
 </svelte:head>
 <div class="wrapper">
-	<WSdashboard {readings} {sock} />
+	<WSdashboard {trainingStatus} {readings} {sock} />
 	<main class="stats-dashboard">
 		<button class="btn-primary" disabled={!canStart} onclick={startTraining}>Start Traning</button>
 		<div class="best">
 			<h2>Current best:</h2>
-			<div class="best">1 R 2 3 1</div>
-			<!-- {#if currentBest}
-				<div class="grid-best-item">module</div>
-				<div class="grid-best-item">hand</div>
-				<div class="grid-best-item">xAccel</div>
-				<div class="grid-best-item">yAccel</div>
-				<div class="grid-best-item">zAccel</div>
-				<div class="grid-best-item">punch N°</div>
-				<div class="best-item">{currentBest.module}</div>
-				<div class="best-item">{currentBest.side}</div>
-				<div class="best-item">{currentBest.xAccel}</div>
-				<div class="best-item">{currentBest.yAccel}</div>
-				<div class="best-item">{currentBest.zAccel}</div>
-				<div class="best-item">{Math.abs(index - readings.length)}</div>
-			{/if} -->
+			<div class="grid-best-item">module</div>
+			<div class="grid-best-item">hand</div>
+			<div class="grid-best-item">xAccel</div>
+			<div class="grid-best-item">yAccel</div>
+			<div class="grid-best-item">zAccel</div>
+			<!-- <div class="grid-best-item">punch N°</div> -->
+			<!-- <div class="best">{readings[findMax(readings)]}</div> -->
+
+			{#if best}
+				<div></div>
+				<div class="best-item">{best.module}</div>
+				<div class="best-item">{best.side}</div>
+				<div class="best-item">{best.xAccel}</div>
+				<div class="best-item">{best.yAccel}</div>
+				<div class="best-item">{best.zAccel}</div>
+				<!-- <div class="best-item">{Math.abs(index - readings.length)}</div> -->
+			{/if}
 		</div>
 		<div class="readings-feed">
 			<button
@@ -136,7 +171,7 @@
 				onclick={() => {
 					readings.unshift({
 						side: 'R',
-						module: 2,
+						module: parseFloat((Math.random() * 10).toFixed(2)),
 						xAccel: -1.5,
 						yAccel: 2.3,
 						zAccel: 0.0
@@ -222,5 +257,15 @@
 	/*}*/
 	.grid-header-item {
 		background-color: var(--accent-200);
+	}
+
+	.best {
+		display: grid;
+		grid-auto-flow: row;
+		/*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
+		grid-template-columns: repeat(6, 1fr);
+		gap: 20px;
+
+		text-align: center;
 	}
 </style>

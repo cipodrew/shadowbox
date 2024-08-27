@@ -4,7 +4,7 @@ type Training = {
 }
 type Reading = {
 	side: "R" | "L"
-	module?: number
+	module: number
 	xAccel: number
 	yAccel: number
 	zAccel: number

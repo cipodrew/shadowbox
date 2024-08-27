@@ -3,9 +3,13 @@
 	import Button from '$lib/components/Button.svelte';
 	import { onMount } from 'svelte';
 
-	/** @type {{ readings: string[] , sock: WebSocket | undefined}}
+	/**
+	 * @typedef {import('$lib/myTypes.js').Reading} Reading
+	 */
+
+	/** @type {{ trainingStatus: string, readings: Reading[] , sock: WebSocket | undefined}}
 } */
-	let { readings, sock } = $props();
+	let { trainingStatus, readings, sock } = $props();
 
 	let localIP = $state('');
 	let wsPort = $state('');
@@ -58,12 +62,13 @@
 		}
 		sock = new WebSocket('ws://' + localIP + ':' + wsPort); //use wss for TLS channel
 		// console.log(sock);
-		sock.onopen = function (event) {
+		sock.onopen = function () {
 			console.log('Connected to WebSocket server.');
 		};
 		sock.onmessage = function (event) {
 			console.log('Received: ' + event.data);
 			readings.push(event.data);
+			//TODO: implement update logic to replace current best if needed
 		};
 	}
 
@@ -89,7 +94,7 @@
 </script>
 
 <section class="ws-info">
-	<h1>Session in progress</h1>
+	<h1>{trainingStatus}</h1>
 	<div>Websocket state: {resolveSockState(sock)}</div>
 	<div>
 		<label for="IP-input">Web socket IP:</label>
