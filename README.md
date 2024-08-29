@@ -7,8 +7,13 @@ usage:
 docker build -t sveltekit-shadowbox-dev:latest .  && \
 docker run --name=svelte-shadowbox -p 4000:4000 sveltekit-shadowbox-dev
 ```
-add -d to the run command to launch the container in detached mode
+add -d to the run command to launch the container in detached mode.
 open browser on localhost 4000
+
+## Type Checking
+To disable Type Checking with JSDOC edit the jsconfig.json file by setting the field checkJS to false
+
+---
 
 # create-svelte
 
