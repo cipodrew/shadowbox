@@ -13,21 +13,22 @@
 	 * @type WebSocket | undefined
 	 */
 	let sock = $state();
-	///**
-	// * @type number
-	// */ let sockState;
 
+	function onClose() {
+		console.log('Connection closed successfully');
+		trainingStatus = 'done';
+		console.log(sock);
+	}
 	/**
 	 * @type {Reading[]}
 	 */
-	//TODO: controllare se server funzione da passare a componente per fare push di readings o basta passare le reading direttamente
-	let readings = $state([
+	const dummyData = [
 		{
 			side: 'R',
-			module: 1,
 			xAccel: 9.81,
 			yAccel: 0.0,
-			zAccel: -9.81
+			zAccel: -9.81,
+			module: 1
 		},
 		{
 			side: 'L',
@@ -43,7 +44,13 @@
 			yAccel: 2.3,
 			zAccel: 0.0
 		}
-	]);
+	];
+	/**
+	 * @type {Reading[]}
+	 */
+	//TODO: controllare se server funzione da passare a componente per fare push di readings o basta passare le reading direttamente
+	// let readings = $state(dummyData);
+	let readings = $state([]);
 	// let invertedReadings = $derived(readings.reverse);
 
 	// const READINGS_KEY = 'readings_key';
@@ -53,6 +60,13 @@
 	// $effect(function saveLocal() {
 	// 	localStorage.setItem(READINGS_KEY, JSON.stringify(readings));
 	// });
+
+	/**
+	 * @param {Reading} reading
+	 */
+	function updateReadings(reading) {
+		readings.unshift(reading);
+	}
 
 	onMount(() => {
 		return function cleanup() {
@@ -71,7 +85,19 @@
 	function saveTraning() {} //TODO:
 
 	//let canStart = $state(true);
-	let canStart = $derived(sock?.readyState === 1); //true se socket é connessa
+	let canStart = $derived.by(() => {
+		if (sock?.readyState === 1 || sock?.readyState === 0) {
+			return true;
+		} else if (sock?.readyState === 3) {
+			return false;
+		} else {
+			return false;
+		}
+		return false;
+	});
+
+	$inspect(canStart);
+	$inspect(sock?.readyState);
 	/**
 	 * @type {TrainingStatus}
 	 */
@@ -142,7 +168,7 @@
 	<title>Live Session</title>
 </svelte:head>
 <div class="wrapper">
-	<WSdashboard {trainingStatus} {readings} {sock} />
+	<WSdashboard {trainingStatus} {updateReadings} bind:sock {onClose} />
 	<main class="stats-dashboard">
 		<button class="btn-primary" disabled={!canStart} onclick={startTraining}>Start Traning</button>
 		<div class="best">
@@ -199,6 +225,11 @@
 				{/each}
 			</div>
 		</div>
+		<h2>
+			can start:{canStart}<br />
+			ready state: {sock?.readyState} <br />
+			training Status: {trainingStatus}
+		</h2>
 		<div class="graph">
 			<p>Graph</p>
 		</div>
@@ -257,6 +288,7 @@
 	/*}*/
 	.grid-header-item {
 		background-color: var(--accent-200);
+		text-align: center;
 	}
 
 	.best {

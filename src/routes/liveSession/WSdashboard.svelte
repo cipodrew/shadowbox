@@ -2,19 +2,20 @@
 	//to debug use chrome devtools ->Network tab -> WS
 	import Button from '$lib/components/Button.svelte';
 	import { onMount } from 'svelte';
+	import { COMMUNICATION_PROTOCOL_VERSION } from '$lib/constants';
 
 	/**
 	 * @typedef {import('$lib/myTypes.js').Reading} Reading
+	 * @typedef {import('$lib/myTypes.js').TrainingStatus} TrainingStatus
 	 */
 
-	/** @type {{ trainingStatus: string, readings: Reading[] , sock: WebSocket | undefined}}
-} */
-	let { trainingStatus, readings, sock } = $props();
+	/** @type {{ trainingStatus: TrainingStatus, updateReadings: (reading: Reading) => void , sock: WebSocket | undefined, onClose: () => void }}
+	 */
+	let { trainingStatus, updateReadings, sock = $bindable(), onClose } = $props();
 
-	let localIP = $state('');
-	let wsPort = $state('');
+	let localIP = $state('192.168.1.105');
+	let wsPort = $state('3000');
 
-	// $inspect(sock);
 	onMount(() => {
 		//const host = '192.168.1.105';
 		//const port = '3000';
@@ -51,12 +52,14 @@
 
 	function disconnect() {
 		console.log('closing connection');
-		sock?.close();
+		if (sock?.readyState === 1) {
+			sock?.close();
+		}
 	}
 
 	function connect() {
 		// default IP 192.168.1.105
-		//dfeault port 3000
+		//default port 3000
 		if (wsPort === '') {
 			wsPort = '3000';
 		}
@@ -65,20 +68,46 @@
 		sock.onopen = function () {
 			console.log('Connected to WebSocket server.');
 		};
-		sock.onmessage = function (event) {
+		sock.onclose = function () {
+			onClose();
+		};
+		sock.onmessage = function (/** @type {{ data: string; }} */ event) {
+			if (trainingStatus != 'in progress') {
+				return; //early return if the training is not in progress
+			}
 			console.log('Received: ' + event.data);
-			readings.push(event.data);
+			let messageFields = event.data.split('|');
+			//Validation-----------
+			if (messageFields.length != 6) {
+				console.log('unxpected number of fields in message!');
+			}
+			if (messageFields[0] != COMMUNICATION_PROTOCOL_VERSION) {
+				console.log('protocol version mismatch!');
+				return;
+			}
+			if (messageFields[1] != 'R' && messageFields[1] != 'L') {
+				console.log('unexpected side value!');
+			}
+			//----------Validation
+			updateReadings({
+				// @ts-ignore
+				side: messageFields[1],
+				xAccel: parseFloat(messageFields[2]),
+				yAccel: parseFloat(messageFields[3]),
+				zAccel: parseFloat(messageFields[4]),
+				module: parseFloat(messageFields[5])
+			});
 			//TODO: implement update logic to replace current best if needed
 		};
 	}
 
 	/**
-	 *@param {WebSocket | undefined} sock
+	 *@param {number | undefined} readyState
 	 *@returns {string}
 	 */
-	function resolveSockState(sock) {
+	function resolveSockState(readyState) {
 		// console.log(sock?.readyState);
-		switch (sock?.readyState) {
+		switch (readyState) {
 			case 0:
 				return 'attempting to connect';
 			case 1:
@@ -95,7 +124,7 @@
 
 <section class="ws-info">
 	<h1>{trainingStatus}</h1>
-	<div>Websocket state: {resolveSockState(sock)}</div>
+	<div>Websocket state: {sock?.readyState}</div>
 	<div>
 		<label for="IP-input">Web socket IP:</label>
 		<input type="text" id="IP-input" bind:value={localIP} placeholder="192.168.1.105" />

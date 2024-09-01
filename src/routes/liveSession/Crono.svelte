@@ -6,19 +6,24 @@
 	let minutes = $derived(Math.floor(time / 60));
 	let seconds = $derived(time % 60);
 
+	let alreadyset = false;
+
 	$effect(function controlTimer() {
-		//TODO: might not be needed, might be replaced by ordinary callback functios
+		//TODO: might not be needed, might be replaced by ordinary callback functions
 		let interval_id;
-		if (trainingStatus === 'in progress') {
+		if (trainingStatus === 'in progress' && !alreadyset) {
 			interval_id = setInterval(() => {
 				time++;
 			}, 1000);
+			alreadyset = true;
 		}
 		if (trainingStatus === 'stopped') {
 			clearInterval(interval_id);
+			alreadyset = false;
 		}
 		if (trainingStatus === 'done') {
 			clearInterval(interval_id);
+			alreadyset = false;
 		}
 	});
 </script>

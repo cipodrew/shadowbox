@@ -1,0 +1,1 @@
+export const COMMUNICATION_PROTOCOL_VERSION = "1";
