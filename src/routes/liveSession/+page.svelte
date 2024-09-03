@@ -28,18 +28,18 @@
 			xAccel: 9.81,
 			yAccel: 0.0,
 			zAccel: -9.81,
-			module: 1
+			modulus: 1
 		},
 		{
 			side: 'L',
-			module: 1.4,
+			modulus: 1.4,
 			xAccel: 3.5,
 			yAccel: 4.2,
 			zAccel: 1.1
 		},
 		{
 			side: 'R',
-			module: 2,
+			modulus: 2,
 			xAccel: -1.5,
 			yAccel: 2.3,
 			zAccel: 0.0
@@ -126,7 +126,7 @@
 	// function bestPunch(readings) {
 	// 	for (let i = 0; i < readings.length; i++) {
 	// 		let currentReading = readings[i];
-	// 		if (currentBest === undefined || currentReading?.module > currentBest?.reading.module) {
+	// 		if (currentBest === undefined || currentReading?.modulus > currentBest?.reading.modulus) {
 	// 			currentBest.reading = currentReading;
 	// 			currentBest.index = Math.abs(i - readings.length);
 	// 			return currentBest;
@@ -144,8 +144,8 @@
 		let index = -1;
 		for (let i = 0; i < readings.length; i++) {
 			let currentReading = readings[i];
-			if (currentReading?.module > currentMax) {
-				currentMax = currentReading?.module;
+			if (currentReading?.modulus > currentMax) {
+				currentMax = currentReading?.modulus;
 				index = Math.abs(i - readings.length);
 				return index;
 			}
@@ -159,7 +159,7 @@
 	 */
 	let best = $derived.by(function findMax() {
 		return readings.reduce((max, current) => {
-			return current.module > max.module ? current : max;
+			return current.modulus > max.modulus ? current : max;
 		}, readings[0]);
 	});
 </script>
@@ -173,7 +173,7 @@
 		<button class="btn-primary" disabled={!canStart} onclick={startTraining}>Start Traning</button>
 		<div class="best">
 			<h2>Current best:</h2>
-			<div class="grid-best-item">module</div>
+			<div class="grid-best-item">modulus</div>
 			<div class="grid-best-item">hand</div>
 			<div class="grid-best-item">xAccel</div>
 			<div class="grid-best-item">yAccel</div>
@@ -183,7 +183,7 @@
 
 			{#if best}
 				<div></div>
-				<div class="best-item">{best.module}</div>
+				<div class="best-item">{best.modulus}</div>
 				<div class="best-item">{best.side}</div>
 				<div class="best-item">{best.xAccel}</div>
 				<div class="best-item">{best.yAccel}</div>
@@ -197,7 +197,7 @@
 				onclick={() => {
 					readings.unshift({
 						side: 'R',
-						module: parseFloat((Math.random() * 10).toFixed(2)),
+						modulus: parseFloat((Math.random() * 10).toFixed(2)),
 						xAccel: parseFloat((Math.random() * 10).toFixed(2)),
 						yAccel: parseFloat((Math.random() * 10).toFixed(2)),
 						zAccel: parseFloat((Math.random() * 10).toFixed(2))
@@ -206,7 +206,7 @@
 			>
 			<h2>Readings above treshold:</h2>
 			<div class="readings-grid">
-				<div class="grid-header-item">module</div>
+				<div class="grid-header-item">modulus</div>
 				<div class="grid-header-item">hand</div>
 				<div class="grid-header-item">xAccel</div>
 				<div class="grid-header-item">yAccel</div>
@@ -215,7 +215,7 @@
 				<!-- {#each readings.toReversed() as reading, i } if using push instead of unshift -->
 				{#each readings as reading, i}
 					<!--					<li>{reading}</li> -->
-					<div class="reading-item">{reading.module}</div>
+					<div class="reading-item">{reading.modulus}</div>
 					<div class="reading-item">{reading.side}</div>
 					<div class="reading-item">{reading.xAccel}</div>
 					<div class="reading-item">{reading.yAccel}</div>

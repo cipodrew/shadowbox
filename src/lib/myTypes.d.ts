@@ -7,7 +7,7 @@ type Reading = {
 	xAccel: number
 	yAccel: number
 	zAccel: number
-	module: number
+	modulus: number
 }
 
 type Packet = {

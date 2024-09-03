@@ -98,7 +98,7 @@
 				xAccel: parseFloat(messageFields[2]),
 				yAccel: parseFloat(messageFields[3]),
 				zAccel: parseFloat(messageFields[4]),
-				module: parseFloat(messageFields[5])
+				modulus: parseFloat(messageFields[5])
 			});
 			//TODO: implement update logic to replace current best if needed
 		};
