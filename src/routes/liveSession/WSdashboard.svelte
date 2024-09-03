@@ -71,6 +71,9 @@
 		sock.onclose = function () {
 			onClose();
 		};
+		sock.onerror = function () {
+			console.log('connection error');
+		};
 		sock.onmessage = function (/** @type {{ data: string; }} */ event) {
 			if (trainingStatus != 'in progress') {
 				return; //early return if the training is not in progress

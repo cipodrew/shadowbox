@@ -29,7 +29,7 @@
 </script>
 
 <div class="crono">
-	<div>seconds passed:{time}</div>
+	<!-- <div>seconds passed:{time}</div> -->
 	<div>{hours}hh:{minutes}mm:{seconds}ss</div>
 </div>
 

@@ -15,7 +15,7 @@
 	let sock = $state();
 
 	function onClose() {
-		console.log('Connection closed successfully');
+		console.log('onClose: Connection closed successfully');
 		trainingStatus = 'done';
 		console.log(sock);
 	}
@@ -198,9 +198,9 @@
 					readings.unshift({
 						side: 'R',
 						module: parseFloat((Math.random() * 10).toFixed(2)),
-						xAccel: -1.5,
-						yAccel: 2.3,
-						zAccel: 0.0
+						xAccel: parseFloat((Math.random() * 10).toFixed(2)),
+						yAccel: parseFloat((Math.random() * 10).toFixed(2)),
+						zAccel: parseFloat((Math.random() * 10).toFixed(2))
 					});
 				}}>Add a synthetic reading</button
 			>
@@ -237,7 +237,7 @@
 	</main>
 	<div class="dashboard-footer">
 		<!-- Rate your tiredness <br /> -->
-		Time since session start: <span>{trainingStatus}</span>
+		status: <span>{trainingStatus}</span> <br />Time since session start:
 		<Crono {trainingStatus} />
 	</div>
 </div>
