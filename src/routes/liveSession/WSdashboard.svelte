@@ -9,9 +9,16 @@
 	 * @typedef {import('$lib/myTypes.js').TrainingStatus} TrainingStatus
 	 */
 
-	/** @type {{ trainingStatus: TrainingStatus, updateReadings: (reading: Reading) => void , sock: WebSocket | undefined, onClose: () => void }}
+	/** @type {{ trainingStatus: TrainingStatus, sockState: any, allowStart: () => void, updateReadings: (reading: Reading) => void , sock: WebSocket | undefined, onClose: () => void }}
 	 */
-	let { trainingStatus, updateReadings, sock = $bindable(), onClose } = $props();
+	let {
+		trainingStatus,
+		allowStart,
+		sockState = $bindable(),
+		updateReadings,
+		sock = $bindable(),
+		onClose
+	} = $props();
 
 	let localIP = $state('192.168.1.105');
 	let wsPort = $state('3000');
@@ -67,12 +74,17 @@
 		// console.log(sock);
 		sock.onopen = function () {
 			console.log('Connected to WebSocket server.');
+			sockState = 'connected';
+			allowStart();
 		};
 		sock.onclose = function () {
+			sockState = 'closed';
 			onClose();
 		};
 		sock.onerror = function () {
+			sockState = 'comunication error';
 			console.log('connection error');
+			alert('websocket connection lost! (is the embedded device running?)');
 		};
 		sock.onmessage = function (/** @type {{ data: string; }} */ event) {
 			if (trainingStatus != 'in progress') {
@@ -103,31 +115,12 @@
 			//TODO: implement update logic to replace current best if needed
 		};
 	}
-
-	/**
-	 *@param {number | undefined} readyState
-	 *@returns {string}
-	 */
-	function resolveSockState(readyState) {
-		// console.log(sock?.readyState);
-		switch (readyState) {
-			case 0:
-				return 'attempting to connect';
-			case 1:
-				return 'open';
-			case 2:
-				return 'closing';
-			case 3:
-				return 'closed';
-			default:
-				return 'not started';
-		}
-	}
 </script>
 
 <section class="ws-info">
-	<h1>{trainingStatus}</h1>
-	<div>Websocket state: {sock?.readyState}</div>
+	<!-- <h1>{trainingStatus}</h1> -->
+	<div>Websocket state: {sockState}</div>
+	<div>ready State: {sock?.readyState}</div>
 	<div>
 		<label for="IP-input">Web socket IP:</label>
 		<input type="text" id="IP-input" bind:value={localIP} placeholder="192.168.1.105" />

@@ -16,9 +16,34 @@
 
 	function onClose() {
 		console.log('onClose: Connection closed successfully');
-		trainingStatus = 'done';
 		console.log(sock);
 	}
+
+	// let sockState = $derived.by(
+	// 	/**
+	// 	 *@returns {string}
+	// 	 */
+	// 	function resolveSockState() {
+	// 		// console.log(sock?.readyState);
+	// 		if (sock) {
+	// 			switch (sock?.readyState) {
+	// 				case 0:
+	// 					return 'attempting to connect';
+	// 				case 1:
+	// 					return 'connected';
+	// 				case 2:
+	// 					return 'closing';
+	// 				case 3:
+	// 					return 'closed';
+	// 				default:
+	// 					return 'not started';
+	// 			}
+	// 		}
+	// 		return 'not started';
+	// 	}
+	// );
+	let sockState = $state('not started');
+
 	/**
 	 * @type {Reading[]}
 	 */
@@ -79,25 +104,18 @@
 
 	function endTraning() {
 		//TODO:
+		trainingStatus = 'done';
 		saveTraning();
 	}
 
 	function saveTraning() {} //TODO:
 
 	//let canStart = $state(true);
-	let canStart = $derived.by(() => {
-		if (sock?.readyState === 1 || sock?.readyState === 0) {
-			return true;
-		} else if (sock?.readyState === 3) {
-			return false;
-		} else {
-			return false;
-		}
-		return false;
-	});
+	let canStart = $state(false);
+	function allowStart() {
+		canStart = true;
+	}
 
-	$inspect(canStart);
-	$inspect(sock?.readyState);
 	/**
 	 * @type {TrainingStatus}
 	 */
@@ -168,16 +186,23 @@
 	<title>Live Session</title>
 </svelte:head>
 <div class="wrapper">
-	<WSdashboard {trainingStatus} {updateReadings} bind:sock {onClose} />
+	<WSdashboard {trainingStatus} {sockState} {allowStart} {updateReadings} bind:sock {onClose} />
 	<main class="stats-dashboard">
-		<button class="btn-primary" disabled={!canStart} onclick={startTraining}>Start Traning</button>
+		{#if trainingStatus === 'not started'}
+			<button class="btn-primary" disabled={!canStart} onclick={startTraining}>Start Traning</button
+			>
+		{:else if trainingStatus === 'in progress'}
+			<div class="btn-primary">in progress</div>
+		{:else if trainingStatus === 'done'}
+			<div class="btn-secondary">done</div>
+		{/if}
 		<div class="best">
 			<h2>Current best:</h2>
-			<div class="grid-best-item">modulus</div>
-			<div class="grid-best-item">hand</div>
-			<div class="grid-best-item">xAccel</div>
-			<div class="grid-best-item">yAccel</div>
-			<div class="grid-best-item">zAccel</div>
+			<div class="grid-best-header">modulus</div>
+			<div class="grid-best-header">hand</div>
+			<div class="grid-best-header">xAccel</div>
+			<div class="grid-best-header">yAccel</div>
+			<div class="grid-best-header">zAccel</div>
 			<!-- <div class="grid-best-item">punch N°</div> -->
 			<!-- <div class="best">{readings[findMax(readings)]}</div> -->
 
@@ -213,6 +238,9 @@
 				<div class="grid-header-item">zAccel</div>
 				<div class="grid-header-item">punch N°</div>
 				<!-- {#each readings.toReversed() as reading, i } if using push instead of unshift -->
+				{#if !canStart}
+					<div class="please-connect">Please connect to the Web Socket</div>
+				{/if}
 				{#each readings as reading, i}
 					<!--					<li>{reading}</li> -->
 					<div class="reading-item">{reading.modulus}</div>
@@ -225,40 +253,47 @@
 				{/each}
 			</div>
 		</div>
-		<h2>
-			can start:{canStart}<br />
-			ready state: {sock?.readyState} <br />
-			training Status: {trainingStatus}
-		</h2>
 		<div class="graph">
 			<p>Graph</p>
 		</div>
-		<div>test</div>
 	</main>
 	<div class="dashboard-footer">
 		<!-- Rate your tiredness <br /> -->
-		status: <span>{trainingStatus}</span> <br />Time since session start:
-		<Crono {trainingStatus} />
+		<div>Training status: <span>{trainingStatus}</span></div>
+		<Crono text={'Time since session start:'} {trainingStatus}>
+			<button class="btn" onclick={endTraning}>End Session</button>
+		</Crono>
 	</div>
 </div>
 
 <style>
 	:global(body) {
-		margin-bottom: 20px;
+		margin-bottom: 60px;
 	}
 	.stats-dashboard {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 	}
+	@media (width <= 900px) {
+		.stats-dashboard {
+			display: flex;
+			flex-direction: column;
+		}
 
+		:global(body) {
+			margin-bottom: 100px;
+		}
+	}
 	.dashboard-footer {
 		position: fixed;
 		display: flex;
 		left: 0;
 		bottom: 0;
 		width: 100%;
+		max-height: clamp(auto, 70px, 90px);
 		background-color: var(--accent-300);
 		text-align: center;
+		justify-content: space-between;
 	}
 	/*.readings-grid {*/
 	/*	display: flex;*/
@@ -275,20 +310,16 @@
 
 		text-align: center;
 	}
-
-	/*.grid-header {*/
-	/*	display: flex;*/
-	/*	background-color: var(--accent-300);*/
-	/*	gap: 20px;*/
-	/*}*/
-	/*.reading {*/
-	/*	display: flex;*/
-	/*	flex-grow: inherit;*/
-	/*	gap: 20px;*/
-	/*}*/
 	.grid-header-item {
 		background-color: var(--accent-200);
 		text-align: center;
+	}
+
+	.please-connect {
+		grid-column: span 6;
+		border-radius: 6px;
+		margin: 0px 3px;
+		background-color: var(--warning);
 	}
 
 	.best {
@@ -298,6 +329,11 @@
 		grid-template-columns: repeat(6, 1fr);
 		gap: 20px;
 
+		text-align: center;
+	}
+
+	.grid-best-header {
+		background-color: var(--accent-200);
 		text-align: center;
 	}
 </style>

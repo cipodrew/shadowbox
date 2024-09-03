@@ -1,5 +1,5 @@
 <script>
-	let { trainingStatus } = $props();
+	let { text, trainingStatus, children } = $props();
 
 	let time = $state(0);
 	let hours = $derived(Math.floor(time / (60 * 60)));
@@ -7,10 +7,13 @@
 	let seconds = $derived(time % 60);
 
 	let alreadyset = false;
+	/**
+	 * @type {number | undefined}
+	 */
+	let interval_id;
 
 	$effect(function controlTimer() {
 		//TODO: might not be needed, might be replaced by ordinary callback functions
-		let interval_id;
 		if (trainingStatus === 'in progress' && !alreadyset) {
 			interval_id = setInterval(() => {
 				time++;
@@ -30,15 +33,17 @@
 
 <div class="crono">
 	<!-- <div>seconds passed:{time}</div> -->
-	<div>{hours}hh:{minutes}mm:{seconds}ss</div>
+	<div>{text}<span class="numbers">{hours}hh:{minutes}mm:{seconds}ss</span></div>
 </div>
+{@render children()}
 
 <style>
 	.crono {
 		display: flex;
-		flex-direction: nowrap;
+		flex-direction: row;
 		gap: 20px;
-
-		font-size: var(--fs-800);
+	}
+	.numbers {
+		font-size: var(--fs-700);
 	}
 </style>
