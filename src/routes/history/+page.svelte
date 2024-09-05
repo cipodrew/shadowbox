@@ -1,7 +1,21 @@
 <script>
 	import Button from '$lib/components/Button.svelte';
-
+	import { onMount } from 'svelte';
+	import { getHistory } from './localStorage';
 	function showMore() {} //TODO:
+
+	/**
+	 * @type {any[] | null}
+	 */
+	let history = $state([]);
+	onMount(() => {
+		history = getHistory();
+		if (history === null) {
+			history = [];
+		}
+	});
+
+	let lastTenHistory = $derived(history.slice(0, 10));
 </script>
 
 <svelte:head>
