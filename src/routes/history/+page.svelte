@@ -5,9 +5,9 @@
 	function showMore() {} //TODO:
 
 	/**
-	 * @type {Map<any,any>}
+	 * @type {Map<any,any> | null}
 	 */
-	let history = $state(new Map());
+	let history = $state(null);
 	onMount(() => {
 		history = getHistory();
 		if (history === null) {
@@ -20,16 +20,24 @@
 	 * @type import("$lib/myTypes").Training[]
 	 */
 	let lastTenHistory = $derived.by(() => {
+		if (history === null) {
+			return [];
+		}
 		const arr = Array.from(history.values());
-		return arr.slice(-10, arr.length);
+		return arr.slice(-10, arr.length).reverse();
+		//reverse does not count as a side effect here because slice returns a copy
 	});
 
 	/**
 	 * @type import("$lib/myTypes").Training[]
 	 */
 	let restOfHistory = $derived.by(() => {
+		if (history === null) {
+			return [];
+		}
 		const arr = Array.from(history.values());
-		return arr.slice(0, -11);
+		return arr.slice(0, -11).reverse();
+		//reverse does not count as a side effect here because slice returns a copy
 	});
 
 	$inspect(lastTenHistory);
@@ -50,7 +58,9 @@
 			{#if lastTenHistory}
 				{#each lastTenHistory as session}
 					<div class="table-item">{session.id}</div>
-					<div class="table-item">{session.date.toLocaleString('it-IT', { timeZone: 'CET' })}</div>
+					<div class="table-item">
+						{session.date}
+					</div>
 					<div class="table-item">{session.crono}</div>
 					<!-- <div class="table-item">score</div> -->
 					<div class="table-item">{session.best.modulus}</div>

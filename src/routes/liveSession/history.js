@@ -27,7 +27,14 @@ export function saveSession(readings, best, crono,) {
         readings: readings,
         best: best,
         crono: crono,
-        date: new Date(),
+        // date: new Date().toLocaleString('it-IT', {
+        date: new Date().toLocaleString(undefined, {
+            weekday: 'long',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+        }),
     }
     console.log("session: " + session)
     console.log("history pre-set: " + history)

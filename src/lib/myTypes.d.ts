@@ -3,7 +3,7 @@ type Training = {
 	readings: Reading[]
 	best: Reading
 	crono: string
-	date: Date
+	date: string
 }
 type Reading = {
 	side: "R" | "L"
