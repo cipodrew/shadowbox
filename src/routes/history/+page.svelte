@@ -12,7 +12,6 @@
 		if (history === null) {
 			history = new Map();
 		}
-		const arr = Array.from(history.values());
 	});
 
 	/**
