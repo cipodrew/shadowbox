@@ -2,7 +2,6 @@
 	import Button from '$lib/components/Button.svelte';
 	import { onMount } from 'svelte';
 	import { getHistory } from './localStorage';
-	function showMore() {} //TODO:
 
 	/**
 	 * @type {Map<any,any> | null}
@@ -24,7 +23,7 @@
 			return [];
 		}
 		const arr = Array.from(history.values());
-		return arr.slice(-10, arr.length).reverse();
+		return arr.slice(-10, undefined).reverse();
 		//reverse does not count as a side effect here because slice returns a copy
 	});
 
@@ -36,11 +35,14 @@
 			return [];
 		}
 		const arr = Array.from(history.values());
-		return arr.slice(0, -11).reverse();
+		return arr.slice(0, -10).reverse();
 		//reverse does not count as a side effect here because slice returns a copy
 	});
 
-	$inspect(lastTenHistory);
+	let isShownMore = $state(false);
+	function toggleMore() {
+		isShownMore = !isShownMore;
+	}
 </script>
 
 <svelte:head>
@@ -73,8 +75,26 @@
 					</a>
 				{/each}
 			{/if}
+			{#if !isShownMore}
+				<Button variant="primary" onClick={toggleMore}>Show more</Button>
+			{:else if restOfHistory}
+				{#each restOfHistory as session}
+					<a href="/history/{session.id}">
+						<div class="table-line">
+							<div class="table-item">{session.id}</div>
+							<div class="table-item">
+								{session.date}
+							</div>
+							<div class="table-item">{session.crono}</div>
+							<!-- <div class="table-item">score</div> -->
+							<div class="table-item">{session.best.modulus}</div>
+							<button class="">-></button>
+						</div>
+					</a>
+				{/each}
+				<Button variant="primary" onClick={toggleMore}>Collapse</Button>
+			{/if}
 		</section>
-		<Button variant="primary" onClick={showMore}>Show more</Button>
 	</main>
 </div>
 
