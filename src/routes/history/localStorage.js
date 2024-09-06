@@ -7,7 +7,7 @@ export function getHistory() {
     let history = null;
     const historyJSON = localStorage.getItem(HISTORY_KEY)
     if (historyJSON != null) {
-        history = JSON.parse(historyJSON)
+        history = new Map(JSON.parse(historyJSON))
     }
     return history
 }

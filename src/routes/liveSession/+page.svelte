@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import Crono from './Crono.svelte';
 	import WSdashboard from './WSdashboard.svelte';
+	import { saveSession } from './history';
 	/**
 	 * @typedef {import('$lib/myTypes.js').TrainingStatus} TrainingStatus
 	 */
@@ -108,7 +109,10 @@
 		saveTraning();
 	}
 
-	function saveTraning() {} //TODO:
+	function saveTraning() {
+		let crono = hours + ':' + minutes + ':' + seconds;
+		saveSession(readings, best, crono);
+	} //TODO:
 
 	//let canStart = $state(true);
 	let canStart = $state(false);
@@ -127,31 +131,6 @@
 	function startTraining(event) {
 		trainingStatus = 'in progress';
 	}
-
-	// /**
-	//  * @typedef currentBest
-	//  * @property {Reading | undefined} reading
-	//  * @property {number} index
-	//  */
-	// /** @type {currentBest|undefined} */
-	// let currentBest = $state({undefined,-1});
-
-	// /**
-	//  *
-	//  * @param {Reading[]} readings
-	//  * @returns {currentBest | undefined}
-	//  */
-	// function bestPunch(readings) {
-	// 	for (let i = 0; i < readings.length; i++) {
-	// 		let currentReading = readings[i];
-	// 		if (currentBest === undefined || currentReading?.modulus > currentBest?.reading.modulus) {
-	// 			currentBest.reading = currentReading;
-	// 			currentBest.index = Math.abs(i - readings.length);
-	// 			return currentBest;
-	// 		}
-	// 	}
-	// 	return undefined;
-	// }
 
 	/**
 	 * @param {Reading[]} readings
@@ -180,6 +159,12 @@
 			return current.modulus > max.modulus ? current : max;
 		}, readings[0]);
 	});
+
+	//---Crono
+	let time = $state(0);
+	let hours = $derived(Math.floor(time / (60 * 60)));
+	let minutes = $derived(Math.floor(time / 60));
+	let seconds = $derived(time % 60);
 </script>
 
 <svelte:head>
@@ -218,6 +203,7 @@
 		</div>
 		<div class="readings-feed">
 			<button
+				disabled={!canStart}
 				class="btn-secondary"
 				onclick={() => {
 					readings.unshift({
@@ -239,7 +225,10 @@
 				<div class="grid-header-item">punch N°</div>
 				<!-- {#each readings.toReversed() as reading, i } if using push instead of unshift -->
 				{#if !canStart}
-					<div class="please-connect">Please connect to the Web Socket</div>
+					<div class="please-connect">
+						Please connect to the Web Socket
+						<button onclick={allowStart}>Start anyway</button>
+					</div>
 				{/if}
 				{#each readings as reading, i}
 					<!--					<li>{reading}</li> -->
@@ -260,7 +249,7 @@
 	<div class="dashboard-footer">
 		<!-- Rate your tiredness <br /> -->
 		<div>Training status: <span>{trainingStatus}</span></div>
-		<Crono text={'Time since session start:'} {trainingStatus}>
+		<Crono {time} {hours} {minutes} {seconds} text={'Time since session start:'} {trainingStatus}>
 			<button class="btn" onclick={endTraning}>End Session</button>
 		</Crono>
 	</div>

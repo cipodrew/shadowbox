@@ -1,6 +1,9 @@
 type Training = {
-	id: string;
-	xAccelReadings: int[]
+	id: string | number
+	readings: Reading[]
+	best: Reading
+	crono: string
+	date: Date
 }
 type Reading = {
 	side: "R" | "L"
