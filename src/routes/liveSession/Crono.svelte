@@ -1,33 +1,5 @@
 <script>
-	let {
-		time = $bindable(),
-		hours = $bindable(),
-		minutes = $bindable(),
-		seconds = $bindable(),
-		text,
-		trainingStatus,
-		children
-	} = $props();
-
-	let alreadyset = false;
-	/**
-	 * @type {number | undefined}
-	 */
-	let interval_id;
-
-	$effect(function controlTimer() {
-		//TODO: might not be needed, might be replaced by ordinary callback functions
-		if (trainingStatus === 'in progress' && !alreadyset) {
-			interval_id = setInterval(() => {
-				time++;
-			}, 1000);
-			alreadyset = true;
-		}
-		if (trainingStatus === 'done') {
-			clearInterval(interval_id);
-			alreadyset = false;
-		}
-	});
+	let { time, hours, minutes, seconds, text, trainingStatus, children } = $props();
 </script>
 
 <div class="crono">

@@ -165,6 +165,25 @@
 	let hours = $derived(Math.floor(time / (60 * 60)));
 	let minutes = $derived(Math.floor(time / 60));
 	let seconds = $derived(time % 60);
+
+	let alreadyset = false;
+	/**
+	 * @type {number | undefined}
+	 */
+	let interval_id;
+	$effect(function controlTimer() {
+		//TODO: might not be needed, might be replaced by ordinary callback functions
+		if (trainingStatus === 'in progress' && !alreadyset) {
+			interval_id = setInterval(() => {
+				time++;
+			}, 1000);
+			alreadyset = true;
+		}
+		if (trainingStatus === 'done') {
+			clearInterval(interval_id);
+			alreadyset = false;
+		}
+	});
 </script>
 
 <svelte:head>
