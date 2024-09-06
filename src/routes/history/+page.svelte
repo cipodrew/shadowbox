@@ -50,20 +50,27 @@
 	<main class="container">
 		<h1 class="heading-1">Your past training sessions</h1>
 		<section class="table">
-			<div class="table-item">ID</div>
-			<div class="table-item">date</div>
-			<div class="table-item">crono</div>
-			<!-- <div class="table-item">score</div> -->
-			<div class="table-item">best</div>
+			<div class="table-line">
+				<div class="table-item">ID</div>
+				<div class="table-item">date</div>
+				<div class="table-item">crono</div>
+				<!-- <div class="table-item">score</div> -->
+				<div class="table-item">best</div>
+			</div>
 			{#if lastTenHistory}
 				{#each lastTenHistory as session}
-					<div class="table-item">{session.id}</div>
-					<div class="table-item">
-						{session.date}
-					</div>
-					<div class="table-item">{session.crono}</div>
-					<!-- <div class="table-item">score</div> -->
-					<div class="table-item">{session.best.modulus}</div>
+					<a href="/history/{session.id}">
+						<div class="table-line">
+							<div class="table-item">{session.id}</div>
+							<div class="table-item">
+								{session.date}
+							</div>
+							<div class="table-item">{session.crono}</div>
+							<!-- <div class="table-item">score</div> -->
+							<div class="table-item">{session.best.modulus}</div>
+							<button class="">-></button>
+						</div>
+					</a>
 				{/each}
 			{/if}
 		</section>
@@ -102,12 +109,27 @@
 		display: grid;
 		grid-auto-flow: row;
 		/*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
-		grid-template-columns: repeat(4, 1fr);
-		gap: 20px;
+		gap: 10px;
 
 		text-align: center;
 	}
+	.table-line {
+		column-span: 5;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr) 40px;
+		gap: 20px;
+	}
 	.table-item {
 		border: 2px solid var(--background-950);
+	}
+
+	.table > a {
+		color: inherit;
+		text-decoration: none;
+
+		transition: 200ms;
+	}
+	.table > a:hover {
+		opacity: 50%;
 	}
 </style>
