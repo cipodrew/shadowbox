@@ -6,16 +6,10 @@ import { getHistory } from '../localStorage.js';
 export function load({ params }) {
 
     let hist = null;
-    let trainingSession;
     if (browser) {
         hist = getHistory()
     }
-    if (hist != null) {
-        trainingSession = hist.get(parseInt(params.slug));
-    }
     return {
-        slug: params.slug,
-        trainingSession,
+        hist,
     }
-    //in alternativa si può usare page store direttamente nella pagina 
 }

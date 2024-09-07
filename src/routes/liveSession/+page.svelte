@@ -3,6 +3,7 @@
 	import Crono from './Crono.svelte';
 	import WSdashboard from './WSdashboard.svelte';
 	import { saveSession } from './history';
+	import { beforeNavigate } from '$app/navigation';
 	/**
 	 * @typedef {import('$lib/myTypes.js').TrainingStatus} TrainingStatus
 	 */
@@ -94,14 +95,22 @@
 		readings.unshift(reading);
 	}
 
+	let intercept = false;
 	onMount(() => {
 		return function cleanup() {
 			if (trainingStatus === 'in progress') {
 				/* prompt user for confirmation on leaving */
-				alert('Do you really want to leave? Your progress will be lost!');
+				if (!confirm('Do you really want to leave? Your progress will be lost!')) {
+					intercept = true;
+				}
 			}
 		};
 	});
+	// beforeNavigate(({ cancel }) => {
+	// 	if (intercept === true) {
+	// 		cancel();
+	// 	}
+	// });
 
 	function endTraning() {
 		//TODO:

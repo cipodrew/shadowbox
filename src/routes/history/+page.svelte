@@ -52,11 +52,11 @@
 		<h1 class="heading-1">Your past training sessions</h1>
 		<section class="table">
 			<div class="table-line">
-				<div class="table-item">ID</div>
-				<div class="table-item">date</div>
-				<div class="table-item">crono</div>
+				<div class="table-item table-header">ID</div>
+				<div class="table-item table-header">date</div>
+				<div class="table-item table-header">crono</div>
 				<!-- <div class="table-item">score</div> -->
-				<div class="table-item">best</div>
+				<div class="table-item table-header">best</div>
 			</div>
 			{#if lastTenHistory}
 				{#each lastTenHistory as session}
@@ -131,6 +131,9 @@
 		gap: 10px;
 
 		text-align: center;
+	}
+	.table-header {
+		font-size: var(--fs-500);
 	}
 	.table-line {
 		column-span: 5;

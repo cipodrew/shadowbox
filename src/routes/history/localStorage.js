@@ -1,7 +1,7 @@
 import { HISTORY_KEY } from "$lib/constants";
 /**
- * 
- * @returns
+ * retrieves the the training history from local Storage
+ * @returns {Map<number,import("$lib/myTypes").Training> | null} 
  */
 export function getHistory() {
     let history = null;

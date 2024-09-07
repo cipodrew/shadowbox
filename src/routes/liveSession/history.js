@@ -5,11 +5,15 @@ import { HISTORY_KEY } from "$lib/constants";
  * @param {import("$lib/myTypes").Reading[]} readings 
  * @param {import("$lib/myTypes").Reading} best 
  * @param {string} crono 
+ * 
  */
 export function saveSession(readings, best, crono,) {
 
     //TODO: modal popup to rate performance?
 
+    /**
+     * @type {Map<number,import("$lib/myTypes").Training>}
+     */
     let history = new Map();
     const historyJSON = localStorage.getItem(HISTORY_KEY)
     console.log(historyJSON)
