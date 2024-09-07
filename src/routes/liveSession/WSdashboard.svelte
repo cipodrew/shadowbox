@@ -24,17 +24,6 @@
 	let wsPort = $state('3000');
 
 	onMount(() => {
-		//const host = '192.168.1.105';
-		//const port = '3000';
-		//sock = new WebSocket('ws://' + host + ':' + port); //use wss for TLS channel
-		//console.log(sock);
-		//sock.onopen = function (event) {
-		//	console.log('Connected to WebSocket server.');
-		//};
-		//sock.onmessage = function (event) {
-		//	console.log('Received: ' + event.data);
-		//	readings.push(event.data);
-		//};
 		let previousWsInfo = sessionStorage.getItem('wsInfo');
 		if (previousWsInfo) {
 			let info = JSON.parse(previousWsInfo);

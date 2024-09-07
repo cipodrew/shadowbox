@@ -16,7 +16,7 @@ export function saveSession(readings, best, crono,) {
      */
     let history = new Map();
     const historyJSON = localStorage.getItem(HISTORY_KEY)
-    console.log(historyJSON)
+    // console.log(historyJSON)
     if (historyJSON != null) {
         history = new Map(JSON.parse(historyJSON))
     }
@@ -33,19 +33,19 @@ export function saveSession(readings, best, crono,) {
         crono: crono,
         // date: new Date().toLocaleString('it-IT', {
         date: new Date().toLocaleString(undefined, {
-            weekday: 'long',
+            // weekday: 'long',
             month: '2-digit',
             day: '2-digit',
             hour: '2-digit',
             minute: '2-digit',
         }),
     }
-    console.log("session: " + session)
-    console.log("history pre-set: " + history)
-    console.log(JSON.stringify([...history]))
+    // console.log("session: " + session)
+    // console.log("history pre-set: " + history)
+    // console.log(JSON.stringify([...history]))
 
     history.set(id, session)
     localStorage.setItem(HISTORY_KEY, JSON.stringify([...history]))
-    console.log("history after-set: " + history)
+    // console.log("history after-set: " + history)
 
 }

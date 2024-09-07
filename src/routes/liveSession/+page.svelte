@@ -4,6 +4,7 @@
 	import WSdashboard from './WSdashboard.svelte';
 	import { saveSession } from './history';
 	import { beforeNavigate } from '$app/navigation';
+	import { elasticInOut } from 'svelte/easing';
 	/**
 	 * @typedef {import('$lib/myTypes.js').TrainingStatus} TrainingStatus
 	 */
@@ -18,7 +19,7 @@
 
 	function onClose() {
 		console.log('onClose: Connection closed successfully');
-		console.log(sock);
+		// console.log(sock);
 	}
 
 	// let sockState = $derived.by(
@@ -98,19 +99,23 @@
 	let intercept = false;
 	onMount(() => {
 		return function cleanup() {
-			if (trainingStatus === 'in progress') {
-				/* prompt user for confirmation on leaving */
-				if (!confirm('Do you really want to leave? Your progress will be lost!')) {
-					intercept = true;
-				}
-			}
+			//TODO: any cleanup needed here
 		};
 	});
-	// beforeNavigate(({ cancel }) => {
-	// 	if (intercept === true) {
-	// 		cancel();
-	// 	}
-	// });
+
+	beforeNavigate(({ cancel }) => {
+		if (trainingStatus != 'in progress') {
+			return;
+		}
+		if (!confirm('Do you really want to leave? Your progress will be lost!')) {
+			intercept = true;
+		} else {
+			intercept = false;
+		}
+		if (intercept === true) {
+			cancel();
+		}
+	});
 
 	function endTraning() {
 		//TODO:
@@ -119,6 +124,9 @@
 	}
 
 	function saveTraning() {
+		if (readings.length === 0) {
+			return;
+		}
 		let crono = hours + ':' + minutes + ':' + seconds;
 		saveSession(readings, best, crono);
 	} //TODO:
@@ -141,24 +149,24 @@
 		trainingStatus = 'in progress';
 	}
 
-	/**
-	 * @param {Reading[]} readings
-	 * @returns {number}
-	 */
-	function findMax(readings) {
-		let currentMax = 0;
-		let index = -1;
-		for (let i = 0; i < readings.length; i++) {
-			let currentReading = readings[i];
-			if (currentReading?.modulus > currentMax) {
-				currentMax = currentReading?.modulus;
-				index = Math.abs(i - readings.length);
-				return index;
-			}
-		}
-		console.log(index);
-		return index;
-	}
+	// /**
+	//  * @param {Reading[]} readings
+	//  * @returns {number}
+	//  */
+	// function findMax(readings) {
+	// 	let currentMax = 0;
+	// 	let index = -1;
+	// 	for (let i = 0; i < readings.length; i++) {
+	// 		let currentReading = readings[i];
+	// 		if (currentReading?.modulus > currentMax) {
+	// 			currentMax = currentReading?.modulus;
+	// 			index = Math.abs(i - readings.length);
+	// 			return index;
+	// 		}
+	// 	}
+	// 	console.log(index);
+	// 	return index;
+	// }
 
 	/**
 	 * @type Reading
@@ -207,7 +215,15 @@
 		{:else if trainingStatus === 'in progress'}
 			<div class="btn-primary">in progress</div>
 		{:else if trainingStatus === 'done'}
-			<div class="btn-secondary">done</div>
+			<div class="btn-secondary">
+				done
+				<button
+					onclick={(e) => {
+						readings = [];
+						startTraining(e);
+					}}>New session?</button
+				>
+			</div>
 		{/if}
 		<div class="best">
 			<h2>Current best:</h2>
@@ -231,7 +247,7 @@
 		</div>
 		<div class="readings-feed">
 			<button
-				disabled={!canStart}
+				disabled={!canStart || trainingStatus != 'in progress'}
 				class="btn-secondary"
 				onclick={() => {
 					readings.unshift({
@@ -278,7 +294,9 @@
 		<!-- Rate your tiredness <br /> -->
 		<div>Training status: <span>{trainingStatus}</span></div>
 		<Crono {time} {hours} {minutes} {seconds} text={'Time since session start:'} {trainingStatus}>
-			<button class="btn" onclick={endTraning}>End Session</button>
+			<button class="btn" onclick={endTraning} disabled={trainingStatus != 'in progress'}
+				>End Session</button
+			>
 		</Crono>
 	</div>
 </div>

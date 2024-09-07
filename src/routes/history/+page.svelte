@@ -68,7 +68,7 @@
 							</div>
 							<div class="table-item">{session.crono}</div>
 							<!-- <div class="table-item">score</div> -->
-							<div class="table-item">{session.best.modulus}</div>
+							<div class="table-item">{session.best?.modulus}</div>
 							<button class="">-></button>
 						</div>
 					</a>
@@ -86,7 +86,7 @@
 							</div>
 							<div class="table-item">{session.crono}</div>
 							<!-- <div class="table-item">score</div> -->
-							<div class="table-item">{session.best.modulus}</div>
+							<div class="table-item">{session.best?.modulus}</div>
 							<button class="">-></button>
 						</div>
 					</a>
@@ -99,7 +99,7 @@
 
 <style>
 	:global(body) {
-		height: 100svh;
+		height: 100%;
 	} /* Svelte rules are scoped by default so we need to specify if we want a global rule.
 	 In this case it's fine because this is a page component */
 
@@ -129,6 +129,7 @@
 		grid-auto-flow: row;
 		/*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
 		gap: 10px;
+		padding: 10px;
 
 		text-align: center;
 	}
