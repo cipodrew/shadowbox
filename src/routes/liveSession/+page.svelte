@@ -4,7 +4,7 @@
 	import WSdashboard from './WSdashboard.svelte';
 	import { saveSession } from './history';
 	import { beforeNavigate } from '$app/navigation';
-	import { elasticInOut } from 'svelte/easing';
+	import { makeChartBest, makeChartLatest, registerChart } from '$lib/myChart';
 	/**
 	 * @typedef {import('$lib/myTypes.js').TrainingStatus} TrainingStatus
 	 */
@@ -21,6 +21,8 @@
 		console.log('onClose: Connection closed successfully');
 		// console.log(sock);
 	}
+
+	registerChart();
 
 	// let sockState = $derived.by(
 	// 	/**
@@ -94,6 +96,22 @@
 	 */
 	function updateReadings(reading) {
 		readings.unshift(reading);
+	}
+
+	function synthReading() {
+		let x = parseFloat((Math.random() * 10).toFixed(2));
+		let y = parseFloat((Math.random() * 10).toFixed(2));
+		let z = parseFloat((Math.random() * 10).toFixed(2));
+		let modulus = parseFloat(
+			Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2)).toFixed(2)
+		);
+		return {
+			side: 'R',
+			xAccel: x,
+			yAccel: y,
+			zAccel: z,
+			modulus: modulus
+		};
 	}
 
 	let intercept = false;
@@ -250,13 +268,7 @@
 				disabled={!canStart || trainingStatus != 'in progress'}
 				class="btn-secondary"
 				onclick={() => {
-					readings.unshift({
-						side: 'R',
-						modulus: parseFloat((Math.random() * 10).toFixed(2)),
-						xAccel: parseFloat((Math.random() * 10).toFixed(2)),
-						yAccel: parseFloat((Math.random() * 10).toFixed(2)),
-						zAccel: parseFloat((Math.random() * 10).toFixed(2))
-					});
+					readings.unshift(synthReading());
 				}}>Add a synthetic reading</button
 			>
 			<h2>Readings above treshold:</h2>
@@ -287,7 +299,10 @@
 			</div>
 		</div>
 		<div class="graph">
-			<p>Graph</p>
+			<div>
+				<canvas use:makeChartBest={{ best: best }}></canvas>
+				<canvas use:makeChartLatest={{ latest: readings[readings.length - 1] }}></canvas>
+			</div>
 		</div>
 	</main>
 	<div class="dashboard-footer">
@@ -308,6 +323,7 @@
 	.stats-dashboard {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+		gap: 20px;
 	}
 	@media (width <= 900px) {
 		.stats-dashboard {
