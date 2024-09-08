@@ -5,6 +5,7 @@
 	import { saveSession } from './history';
 	import { beforeNavigate } from '$app/navigation';
 	import { makeChartBest, makeChartLatest, registerChart } from '$lib/myChart';
+	import { fade, scale, slide } from 'svelte/transition';
 	/**
 	 * @typedef {import('$lib/myTypes.js').TrainingStatus} TrainingStatus
 	 */
@@ -98,6 +99,9 @@
 		readings.unshift(reading);
 	}
 
+	/**
+	 * @returns {Reading}
+	 */
 	function synthReading() {
 		let x = parseFloat((Math.random() * 10).toFixed(2));
 		let y = parseFloat((Math.random() * 10).toFixed(2));
@@ -231,9 +235,9 @@
 			<button class="btn-primary" disabled={!canStart} onclick={startTraining}>Start Traning</button
 			>
 		{:else if trainingStatus === 'in progress'}
-			<div class="btn-primary">in progress</div>
+			<div class="banner-primary">in progress</div>
 		{:else if trainingStatus === 'done'}
-			<div class="btn-secondary">
+			<div class="banner-secondary">
 				done
 				<button
 					onclick={(e) => {
@@ -245,22 +249,25 @@
 		{/if}
 		<div class="best">
 			<h2>Current best:</h2>
-			<div class="grid-best-header">modulus</div>
-			<div class="grid-best-header">hand</div>
-			<div class="grid-best-header">xAccel</div>
-			<div class="grid-best-header">yAccel</div>
-			<div class="grid-best-header">zAccel</div>
+			<div class="readings-row">
+				<div class="grid-best-header">modulus</div>
+				<div class="grid-best-header">hand</div>
+				<div class="grid-best-header">xAccel</div>
+				<div class="grid-best-header">yAccel</div>
+				<div class="grid-best-header">zAccel</div>
+			</div>
 			<!-- <div class="grid-best-item">punch N°</div> -->
 			<!-- <div class="best">{readings[findMax(readings)]}</div> -->
 
 			{#if best}
-				<div></div>
-				<div class="best-item">{best.modulus}</div>
-				<div class="best-item">{best.side}</div>
-				<div class="best-item">{best.xAccel}</div>
-				<div class="best-item">{best.yAccel}</div>
-				<div class="best-item">{best.zAccel}</div>
-				<!-- <div class="best-item">{Math.abs(index - readings.length)}</div> -->
+				<div class="readings-row" out:scale={{ duration: 250 }} in:scale={{ duration: 250 }}>
+					<div class="best-item">{best.modulus}</div>
+					<div class="best-item">{best.side}</div>
+					<div class="best-item">{best.xAccel}</div>
+					<div class="best-item">{best.yAccel}</div>
+					<div class="best-item">{best.zAccel}</div>
+					<!-- <div class="best-item">{Math.abs(index - readings.length)}</div> -->
+				</div>
 			{/if}
 		</div>
 		<div class="readings-feed">
@@ -273,12 +280,14 @@
 			>
 			<h2>Readings above treshold:</h2>
 			<div class="readings-grid">
-				<div class="grid-header-item">modulus</div>
-				<div class="grid-header-item">hand</div>
-				<div class="grid-header-item">xAccel</div>
-				<div class="grid-header-item">yAccel</div>
-				<div class="grid-header-item">zAccel</div>
-				<div class="grid-header-item">punch N°</div>
+				<div class="readings-row">
+					<div class="grid-header-item">modulus</div>
+					<div class="grid-header-item">hand</div>
+					<div class="grid-header-item">xAccel</div>
+					<div class="grid-header-item">yAccel</div>
+					<div class="grid-header-item">zAccel</div>
+					<div class="grid-header-item">punch N°</div>
+				</div>
 				<!-- {#each readings.toReversed() as reading, i } if using push instead of unshift -->
 				{#if !canStart}
 					<div class="please-connect">
@@ -286,15 +295,19 @@
 						<button onclick={allowStart}>Start anyway</button>
 					</div>
 				{/if}
-				{#each readings as reading, i}
+				{#each readings as reading, i (reading)}
 					<!--					<li>{reading}</li> -->
-					<div class="reading-item">{reading.modulus}</div>
-					<div class="reading-item">{reading.side}</div>
-					<div class="reading-item">{reading.xAccel}</div>
-					<div class="reading-item">{reading.yAccel}</div>
-					<div class="reading-item">{reading.zAccel}</div>
-					<div class="reading-item">{Math.abs(i - readings.length)}</div>
-					<!--add number of reading? -->
+					<div class="readings-row" out:slide={{ duration: 250 }} in:slide={{ duration: 250 }}>
+						<div class="reading-item">
+							{reading.modulus}
+						</div>
+						<div class="reading-item">{reading.side}</div>
+						<div class="reading-item">{reading.xAccel}</div>
+						<div class="reading-item">{reading.yAccel}</div>
+						<div class="reading-item">{reading.zAccel}</div>
+						<div class="reading-item">{Math.abs(i - readings.length)}</div>
+						<!--add number of reading? -->
+					</div>
 				{/each}
 			</div>
 		</div>
@@ -356,11 +369,16 @@
 		display: grid;
 		grid-auto-flow: row;
 		/*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
-		grid-template-columns: repeat(6, 1fr);
 		gap: 20px;
 
 		text-align: center;
 	}
+	.readings-row {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: 20px;
+	}
+
 	.grid-header-item {
 		background-color: var(--accent-200);
 		text-align: center;
@@ -376,8 +394,6 @@
 	.best {
 		display: grid;
 		grid-auto-flow: row;
-		/*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
-		grid-template-columns: repeat(6, 1fr);
 		gap: 20px;
 
 		text-align: center;
@@ -386,5 +402,33 @@
 	.grid-best-header {
 		background-color: var(--accent-200);
 		text-align: center;
+	}
+
+	.banner-primary {
+		padding: 0.75rem;
+		margin: 25px;
+		background-color: var(--primary-400);
+		color: var(--text);
+
+		border-style: solid;
+		border-width: 2px;
+		border-color: var(--border);
+		border-radius: 7px;
+
+		font-weight: 300;
+	}
+
+	.banner-secondary {
+		padding: 0.75rem;
+		margin: 25px;
+		background-color: var(--secondary-500);
+		color: var(--text-light);
+
+		border-style: solid;
+		border-width: 2px;
+		border-color: var(--border);
+		border-radius: 7px;
+
+		font-weight: 300;
 	}
 </style>
