@@ -5,7 +5,9 @@
 	import { saveSession } from './history';
 	import { beforeNavigate } from '$app/navigation';
 	import { makeChartBest, makeChartLatest, registerChart } from '$lib/myChart';
-	import { fade, scale, slide } from 'svelte/transition';
+	import { scale, slide } from 'svelte/transition';
+	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
 	/**
 	 * @typedef {import('$lib/myTypes.js').TrainingStatus} TrainingStatus
 	 */
@@ -97,6 +99,7 @@
 	 */
 	function updateReadings(reading) {
 		readings.unshift(reading);
+		setTween();
 	}
 
 	/**
@@ -223,6 +226,18 @@
 			alreadyset = false;
 		}
 	});
+
+	//transitions tweened
+	const bestmodulus = tweened(0, {
+		duration: 800,
+		easing: cubicOut
+	});
+
+	function setTween() {
+		if (best.modulus) {
+			bestmodulus.set(best.modulus);
+		}
+	}
 </script>
 
 <svelte:head>
@@ -261,7 +276,7 @@
 
 			{#if best}
 				<div class="readings-row" out:scale={{ duration: 250 }} in:scale={{ duration: 250 }}>
-					<div class="best-item">{best.modulus}</div>
+					<div class="best-item">{$bestmodulus}</div>
 					<div class="best-item">{best.side}</div>
 					<div class="best-item">{best.xAccel}</div>
 					<div class="best-item">{best.yAccel}</div>
@@ -276,6 +291,7 @@
 				class="btn-secondary"
 				onclick={() => {
 					readings.unshift(synthReading());
+					setTween();
 				}}>Add a synthetic reading</button
 			>
 			<h2>Readings above treshold:</h2>
