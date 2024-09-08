@@ -1,6 +1,6 @@
-- integrare grafico in pagina live session
+- aggiungere grafico overall in pagina live session
 
-- Salvare una sessione di allenamento in local storage
+- polish con transizioni easing
 
 - Creare le pagine slug di ogni allenamento passato
 
