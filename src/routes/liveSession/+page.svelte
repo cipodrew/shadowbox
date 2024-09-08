@@ -229,7 +229,7 @@
 
 	//transitions tweened
 	const bestmodulus = tweened(0, {
-		duration: 800,
+		duration: 500,
 		easing: cubicOut
 	});
 

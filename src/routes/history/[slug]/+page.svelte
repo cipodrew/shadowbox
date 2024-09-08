@@ -1,5 +1,8 @@
 <script>
-	import { onMount } from 'svelte';
+	import Button from '$lib/components/Button.svelte';
+	import { makeChartBest, registerChart } from '$lib/myChart';
+
+	registerChart();
 
 	// import * as Types from "$lib/myTypes.js"
 	// import * from "$lib/myTypes.js"
@@ -10,37 +13,23 @@
 
 	let { slug, trainingSession: session } = $derived(data);
 
-	$effect(() => {
-		console.log(data.trainingSession);
-	});
-
-	// let storage;
-	// onMount(() => {
-	// 	localStorage.getItem('historyMap');
-	// });
-	// /**
-	//  * @type {Map<string,Training> | undefined}
-	//  */
-	// let allTrainings = undefined;
-	// /**
-	//  * @type {Training | undefined}
-	//  */
-	// let training = undefined;
-	// if (storage) {
-	// 	allTrainings = JSON.parse(storage);
-	// 	training = allTrainings?.get(slug);
-	// }
+	let isReadingsShown = $state(false);
+	function toggleReadings() {
+		isReadingsShown = !isReadingsShown;
+	}
 </script>
 
 <svelte:head>
 	<title>Your past training session</title>
 </svelte:head>
 <div class="wrapper">
-	<h1>Your past session</h1>
-	<div class="date">{session?.date}</div>
-	<div class="stats">total punches: {session?.readings.length}</div>
+	<section>
+		<h1>Session N°: {slug}</h1>
+		<div class="date">Completed on {session?.date}</div>
+		<div class="stats">total punches: {session?.readings.length}</div>
+	</section>
+	<h2>Best:</h2>
 	<div class="best">
-		<h2>Best:</h2>
 		<div class="grid-best-header">modulus</div>
 		<div class="grid-best-header">hand</div>
 		<div class="grid-best-header">xAccel</div>
@@ -59,19 +48,63 @@
 			<!-- <div class="best-item">{Math.abs(index - readings.length)}</div> -->
 		{/if}
 	</div>
-	<div>This is the slug: {slug}</div>
+	{#if session?.best}
+		<div class="graph">
+			<div>
+				<canvas use:makeChartBest={{ best: session.best }}></canvas>
+			</div>
+		</div>
+	{/if}
+	{#if !isReadingsShown}
+		<Button variant="primary" onClick={toggleReadings}>Show All Readings</Button>
+	{:else}
+		<div class="readings-grid">
+			<div class="readings-row">
+				<div class="grid-header-item">modulus</div>
+				<div class="grid-header-item">hand</div>
+				<div class="grid-header-item">xAccel</div>
+				<div class="grid-header-item">yAccel</div>
+				<div class="grid-header-item">zAccel</div>
+				<div class="grid-header-item">punch N°</div>
+			</div>
+			{#if session}
+				{#each session?.readings as reading, i (reading)}
+					<!--					<li>{reading}</li> -->
+					<div class="readings-row">
+						<div class="reading-item">
+							{reading.modulus}
+						</div>
+						<div class="reading-item">{reading.side}</div>
+						<div class="reading-item">{reading.xAccel}</div>
+						<div class="reading-item">{reading.yAccel}</div>
+						<div class="reading-item">{reading.zAccel}</div>
+						<div class="reading-item">{Math.abs(i - session?.readings.length)}</div>
+						<!--add number of reading? -->
+					</div>
+				{/each}
+			{/if}
+			<Button variant="primary" onClick={toggleReadings}>Collapse Readings</Button>
+		</div>
+	{/if}
 </div>
 
 <style>
 	.wrapper {
-		display: grid;
-		place-items: center;
-		border-style: solid;
-		border-width: 5px;
-		border-color: --var(--border);
-		/*grid-template-rows: minmax(100px, auto) 1fr;*/
-		height: 100svh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 90svh;
+		width: 100%;
+		gap: 20px;
 		/*overflow: hidden;*/
+
+		/* border-style: solid;
+		border-width: 0px 0px 0px 5px;
+		border-color: --var(--border); */
+	}
+
+	.wrapper > * {
+		width: 100%;
 	}
 
 	.best {
@@ -85,6 +118,24 @@
 	}
 
 	.grid-best-header {
+		background-color: var(--accent-200);
+		text-align: center;
+	}
+
+	.readings-grid {
+		display: grid;
+		grid-auto-flow: row;
+		/*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
+		gap: 20px;
+
+		text-align: center;
+	}
+	.readings-row {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: 20px;
+	}
+	.grid-header-item {
 		background-color: var(--accent-200);
 		text-align: center;
 	}
