@@ -106,9 +106,15 @@
 	 * @returns {Reading}
 	 */
 	function synthReading() {
-		let x = parseFloat((Math.random() * 10).toFixed(2));
-		let y = parseFloat((Math.random() * 10).toFixed(2));
-		let z = parseFloat((Math.random() * 10).toFixed(2));
+		function randomSign() {
+			if (Math.random() >= 0.5) {
+				return 1;
+			}
+			return -1;
+		}
+		let x = parseFloat((Math.random() * 10).toFixed(2)) * randomSign();
+		let y = parseFloat((Math.random() * 10).toFixed(2)) * randomSign();
+		let z = parseFloat((Math.random() * 10).toFixed(2)) * randomSign();
 		let modulus = parseFloat(
 			Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2)).toFixed(2)
 		);
