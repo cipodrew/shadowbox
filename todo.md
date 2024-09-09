@@ -1,8 +1,4 @@
-- aggiungere grafico overall in pagina live session e slug
-
-- Rendere collassabile sidebar slug
-
-- ultimi ritocchi bottoni live session
+- Decidere come trattare istogrammi, se visualizzare il valore assoluto oppure mantere i valori con segno
 
 
 

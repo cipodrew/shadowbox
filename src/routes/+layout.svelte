@@ -6,7 +6,7 @@
 
 <nav>
 	<a href="/">Home</a>
-	<a href="/liveSession">live session</a>
+	<a href="/liveSession">Live session</a>
 	<a href="/history">Past sessions</a>
 </nav>
 {@render children()}
