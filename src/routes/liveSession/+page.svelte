@@ -4,7 +4,7 @@
 	import WSdashboard from './WSdashboard.svelte';
 	import { saveSession } from './history';
 	import { beforeNavigate } from '$app/navigation';
-	import { makeChartBest, makeChartLatest, registerChart } from '$lib/myChart';
+	import { makeChartBest, makeChartLatest, makeChartOverall, registerChart } from '$lib/myChart';
 	import { scale, slide } from 'svelte/transition';
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
@@ -98,7 +98,7 @@
 	 * @param {Reading} reading
 	 */
 	function updateReadings(reading) {
-		readings.unshift(reading);
+		readings.push(reading);
 		setTween();
 	}
 
@@ -255,10 +255,11 @@
 			<div class="banner-secondary">
 				done
 				<button
+					class="btn-neutral1"
 					onclick={(e) => {
 						readings = [];
 						startTraining(e);
-					}}>New session?</button
+					}}>Start new session?</button
 				>
 			</div>
 		{/if}
@@ -290,7 +291,7 @@
 				disabled={!canStart || trainingStatus != 'in progress'}
 				class="btn-secondary"
 				onclick={() => {
-					readings.unshift(synthReading());
+					readings.push(synthReading());
 					setTween();
 				}}>Add a synthetic reading</button
 			>
@@ -304,14 +305,13 @@
 					<div class="grid-header-item">zAccel</div>
 					<div class="grid-header-item">punch N°</div>
 				</div>
-				<!-- {#each readings.toReversed() as reading, i } if using push instead of unshift -->
 				{#if !canStart}
 					<div class="please-connect">
 						Please connect to the Web Socket
-						<button onclick={allowStart}>Start anyway</button>
+						<button class="btn-neutral1" onclick={allowStart}>Start anyway</button>
 					</div>
 				{/if}
-				{#each readings as reading, i (reading)}
+				{#each readings.toReversed() as reading, i (reading)}
 					<!--					<li>{reading}</li> -->
 					<div class="readings-row" out:slide={{ duration: 250 }} in:slide={{ duration: 250 }}>
 						<div class="reading-item">
@@ -327,10 +327,11 @@
 				{/each}
 			</div>
 		</div>
-		<div class="graph">
+		<div class="graphs">
 			<div>
 				<canvas use:makeChartBest={{ best: best }}></canvas>
 				<canvas use:makeChartLatest={{ latest: readings[readings.length - 1] }}></canvas>
+				<canvas use:makeChartOverall={{ all: readings }}></canvas>
 			</div>
 		</div>
 	</main>
@@ -338,7 +339,7 @@
 		<!-- Rate your tiredness <br /> -->
 		<div>Training status: <span>{trainingStatus}</span></div>
 		<Crono {time} {hours} {minutes} {seconds} text={'Time since session start:'} {trainingStatus}>
-			<button class="btn" onclick={endTraning} disabled={trainingStatus != 'in progress'}
+			<button class="btn-neutral1" onclick={endTraning} disabled={trainingStatus != 'in progress'}
 				>End Session</button
 			>
 		</Crono>

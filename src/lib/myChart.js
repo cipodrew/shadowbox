@@ -1,4 +1,5 @@
 import {
+    Tooltip,
     Chart,
     Title,
     Legend,
@@ -6,19 +7,41 @@ import {
     BarElement,
     LinearScale,
     CategoryScale,
+    //
+    LineController,
+    LineElement,
+    PointElement,
 } from "chart.js";
 
 
-export function registerChart() {
-    Chart.register( //may be needed
+export function registerChart() {//may be needed
+    Chart.register(
         Title,
         Legend,
+        Tooltip,
+    ) //general
+    registerBarChart()
+    registerLineChart()
+}
+
+function registerBarChart() {
+    Chart.register(
         BarController,
         BarElement,
         LinearScale,
         CategoryScale,
     )
 }
+
+function registerLineChart() {
+    Chart.register(
+        LineController,
+        LineElement,
+        PointElement,
+    )
+}
+
+const colors = ["#fa8938", "#38bdf8", "#16a34a", "#facc15",]
 
 // /**
 //  * @typedef Options
@@ -41,24 +64,24 @@ export function makeChartBest(element, options) {
     /**
     * @param { OptionsBest } options
     */
-    function setupChart(options) {
+    function drawChart(options) {
         chartObject = new Chart(element, {
             type: "bar",
             data: {
                 labels: [
+                    "modulus",
                     "X",
                     "Y",
                     "Z",
-                    "modulus",
                 ],
                 datasets: [
                     {
                         label: "Best (m/s²)",
                         data: {
+                            modulus: options.best?.modulus,
                             X: options.best?.xAccel,
                             Y: options.best?.yAccel,
                             Z: options.best?.zAccel,
-                            modulus: options.best?.modulus,
                         },
                         borderWidth: 1,
                     },
@@ -70,25 +93,25 @@ export function makeChartBest(element, options) {
                         beginAtZero: true,
                     },
                 },
-                backgroundColor: "#fa8938"
+                backgroundColor: (c) => (colors[c.dataIndex % colors.length]),
+                // backgroundColor: "#fa8938"
             },
         });
     }
-    setupChart(options)
+    drawChart(options)
     return {
         /**
         * @param { OptionsBest } options
         */
         update(options) {
             chartObject.destroy();
-            setupChart(options);
+            drawChart(options);
         },
         destroy() {
             chartObject.destroy();
         }
     }
 }
-
 
 /**
  * @typedef OptionsLatest
@@ -112,19 +135,19 @@ export function makeChartLatest(element, options) {
             type: "bar",
             data: {
                 labels: [
+                    "modulus",
                     "X",
                     "Y",
                     "Z",
-                    "modulus",
                 ],
                 datasets: [
                     {
                         label: "Latest (m/s²)",
                         data: {
+                            modulus: options.latest?.modulus,
                             X: options.latest?.xAccel,
                             Y: options.latest?.yAccel,
                             Z: options.latest?.zAccel,
-                            modulus: options.latest?.modulus,
                         },
                         borderWidth: 1,
                     },
@@ -136,7 +159,8 @@ export function makeChartLatest(element, options) {
                         beginAtZero: true,
                     },
                 },
-                backgroundColor: "#fa8938"
+                backgroundColor: (c) => (colors[c.dataIndex % colors.length]),
+                // backgroundColor: "#fa8938"
             },
         });
     }
@@ -144,6 +168,66 @@ export function makeChartLatest(element, options) {
     return {
         /**
         * @param { OptionsLatest } options
+        */
+        update(options) {
+            chartObject.destroy();
+            drawChart(options);
+        },
+        destroy() {
+            chartObject.destroy();
+        }
+    }
+}
+
+
+
+
+/**
+ * @typedef OptionsAll
+ * @property {import('$lib/myTypes.js').Reading[]} all
+ */
+/**
+ * @param {HTMLCanvasElement} element
+* @param { OptionsAll } options
+*/
+export function makeChartOverall(element, options) {
+    /**
+     * @type {Chart<"line", number[], number>}
+     */
+    let chartObject;
+    /**
+    * @param { OptionsAll } options
+    */
+    function drawChart(options) {
+        chartObject = new Chart(element, {
+            type: "line",
+            data: {
+                labels:
+                    options.all.map((e, i) => { return i + 1 })
+                ,
+                datasets: [
+                    {
+                        label: "Every modulus (m/s^2) by punch",
+                        data:
+                            options.all.map(e => e.modulus),
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    x: {
+                        beginAtZero: false,
+                    },
+                },
+                backgroundColor: "#fa8938"
+            },
+        });
+    }
+    drawChart(options)
+    return {
+        /**
+        * @param { OptionsAll } options
         */
         update(options) {
             chartObject.destroy();

@@ -53,7 +53,6 @@
 	}
 
 	.cards a {
-		color: var(--text);
 		font-weight: var(--fw-bold);
 		text-decoration: none;
 	}
@@ -66,8 +65,10 @@
 	}
 
 	.about {
-		background-color: var(--secondary-500);
-		color: var(--text-light);
+		background-color: var(--background-200);
+		color: var(--text);
 		border-radius: 3px;
+		margin: 0 20px;
+		padding: 20px;
 	}
 </style>

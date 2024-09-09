@@ -1,7 +1,10 @@
-- aggiungere grafico overall in pagina live session
+- aggiungere grafico overall in pagina live session e slug
 
-- polish con transizioni easing
+- Rendere collassabile sidebar slug
 
-- Creare le pagine slug di ogni allenamento passato
+- ultimi ritocchi bottoni live session
+
+
+
 
 - Sviluppi futuri: passare da protocollo testuale a binario per messagi WS (maggiore efficienza)

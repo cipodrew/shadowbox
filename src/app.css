@@ -235,8 +235,7 @@ button:active {
   background-color: var(--primary-500);
 }
 
-.btn-primary:disabled,
-.btn-secondary:disabled {
+button:disabled {
   background-color: var(--background-200);
   opacity: 20%;
 }
@@ -258,6 +257,42 @@ button:active {
 .btn-secondary:hover {
   background-color: var(--secondary-400);
 }
+
+.btn-neutral1 {
+  padding: 0.25rem;
+  margin: 5px;
+  background-color: var(--background-100);
+  color: var(--text);
+
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: var(--background-800);
+  border-radius: 7px;
+
+  font-weight: 300;
+  transition: transform ease 0.2s, box-shadow ease 0.2s;
+}
+
+.btn-neutral2 {
+  padding: 0.25rem;
+  margin: 5px;
+  background-color: var(--background-800);
+  color: var(--text-light);
+
+  border-style: solid;
+  border-width: 4px;
+  border-color: var(--border);
+  border-radius: 7px;
+
+  font-weight: 300;
+  transition: transform ease 0.2s, box-shadow ease 0.2s;
+}
+
+.btn-neutral1:hover {
+  box-shadow: 0 20px 80px -10px var(--primary-500);
+}
+
+
 
 /* ----Utility Classes--- */
 .even-columns {

@@ -30,8 +30,8 @@
 
 <div class="columns">
 	<section class="sidebar" class:collapsed>
-		<button class="btn-primary" onclick={collapseSidebar}>Collapse</button>
-		Your latest 10 trainings:
+		<!-- <button class="btn-collapse" onclick={collapseSidebar}>Collapse</button> -->
+		<br /> Your latest 10 trainings:
 		{#each last_10_sessions as sesssion}
 			<ul>
 				<a href={'/history/' + sesssion.id}> <li>Training of {sesssion.date}</li></a>
@@ -42,6 +42,18 @@
 </div>
 
 <style>
+	.sidebar {
+		max-width: max-content;
+		padding: 0 15px 0 0;
+		margin: 0 15px 0 0;
+		background-color: var(--accent-100);
+	}
+	.sidebar a {
+		color: var(--text);
+	}
+	.sidebar a:hover {
+		color: var(--text-700);
+	}
 	.columns {
 		display: grid;
 		grid-template-columns: 1fr 3fr;
@@ -51,10 +63,15 @@
 		.columns {
 			display: flex;
 			flex-direction: column;
+			align-items: center;
+			gap: 10px;
 		}
 	}
 
-	.collapsed {
+	/* .collapsed {
 		max-width: 5%;
 	}
+
+	.btn-collapse {
+	} */
 </style>

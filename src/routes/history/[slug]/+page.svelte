@@ -1,6 +1,6 @@
 <script>
 	import Button from '$lib/components/Button.svelte';
-	import { makeChartBest, registerChart } from '$lib/myChart';
+	import { makeChartBest, makeChartOverall, registerChart } from '$lib/myChart';
 
 	registerChart();
 
@@ -25,8 +25,9 @@
 <div class="wrapper">
 	<section>
 		<h1>Session N°: {slug}</h1>
-		<div class="date">Completed on {session?.date}</div>
-		<div class="stats">total punches: {session?.readings.length}</div>
+		<div class="date">Completed on: {session?.date}</div>
+		<div class="stats">Total punches: {session?.readings.length}</div>
+		<div class="crono">Total time: {session?.crono}</div>
 	</section>
 	<h2>Best:</h2>
 	<div class="best">
@@ -50,14 +51,17 @@
 	</div>
 	{#if session?.best}
 		<div class="graph">
-			<div>
-				<canvas use:makeChartBest={{ best: session.best }}></canvas>
-			</div>
+			<canvas use:makeChartBest={{ best: session.best }}></canvas>
 		</div>
 	{/if}
 	{#if !isReadingsShown}
 		<Button variant="primary" onClick={toggleReadings}>Show All Readings</Button>
 	{:else}
+		{#if session}
+			<div>
+				<canvas use:makeChartOverall={{ all: session?.readings }}></canvas>
+			</div>
+		{/if}
 		<div class="readings-grid">
 			<div class="readings-row">
 				<div class="grid-header-item">modulus</div>
@@ -90,12 +94,15 @@
 
 <style>
 	.wrapper {
+		justify-self: center;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		height: 90svh;
+		justify-content: center;
+		height: 100%;
 		width: 100%;
 		gap: 20px;
+		max-width: 80%;
 		/*overflow: hidden;*/
 
 		/* border-style: solid;
