@@ -10,7 +10,7 @@ docker run --name=svelte-shadowbox -p 4000:4000 sveltekit-shadowbox-dev
 add -d to the run command to launch the container in detached mode.
 open browser on localhost 4000
 
-Docker images assumes you are using the SSR target (with node)
+Docker image assumes you are using the SSR target (with node)
 
 ## Installing dependecies (embedded portion)
 see [embedded/README.md](./embedded/README.md)
