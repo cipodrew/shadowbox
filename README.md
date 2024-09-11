@@ -13,7 +13,7 @@ open browser on localhost 4000
 Docker images assumes you are using the SSR target (with node)
 
 ## Installing dependecies (embedded portion)
-see (embedded/README.md)[./embedded/README.md]
+see [embedded/README.md](./embedded/README.md)
 
 ## Installing dependecies (Sveltekit project)
 Using npm ci instead of npm install should ensure you get the exact versions specified in the lock file. npm install uses the semanthics of package.json instead
