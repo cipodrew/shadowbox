@@ -1,0 +1,1456 @@
+[
+    [
+        0,
+        {
+            "id": 0,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": -1.05,
+                    "yAccel": -3.4,
+                    "zAccel": -7.79,
+                    "modulus": 8.56
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.85,
+                    "yAccel": -5.58,
+                    "zAccel": -9.8,
+                    "modulus": 11.63
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.79,
+                    "yAccel": 8.03,
+                    "zAccel": -9.32,
+                    "modulus": 12.33
+                },
+                {
+                    "side": "R",
+                    "xAccel": -5.7,
+                    "yAccel": -8.81,
+                    "zAccel": 7.44,
+                    "modulus": 12.86
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.44,
+                    "yAccel": 8.99,
+                    "zAccel": 1.94,
+                    "modulus": 10.21
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.86,
+                    "yAccel": -6.08,
+                    "zAccel": -3.43,
+                    "modulus": 7.22
+                },
+                {
+                    "side": "R",
+                    "xAccel": -3.08,
+                    "yAccel": -5.05,
+                    "zAccel": 6.62,
+                    "modulus": 8.88
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.99,
+                    "yAccel": 9.76,
+                    "zAccel": -1.24,
+                    "modulus": 9.89
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": -5.7,
+                "yAccel": -8.81,
+                "zAccel": 7.44,
+                "modulus": 12.86
+            },
+            "crono": "0:0:5",
+            "date": "11/09, 15:09"
+        }
+    ],
+    [
+        1,
+        {
+            "id": 1,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": -2.9,
+                    "yAccel": -7.95,
+                    "zAccel": 7.81,
+                    "modulus": 11.52
+                },
+                {
+                    "side": "R",
+                    "xAccel": -6.49,
+                    "yAccel": 0.94,
+                    "zAccel": -9.03,
+                    "modulus": 11.16
+                },
+                {
+                    "side": "R",
+                    "xAccel": 8.96,
+                    "yAccel": 3.13,
+                    "zAccel": -1.64,
+                    "modulus": 9.63
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.89,
+                    "yAccel": 7.76,
+                    "zAccel": -8.81,
+                    "modulus": 11.89
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.99,
+                    "yAccel": 5.42,
+                    "zAccel": 7.6,
+                    "modulus": 9.8
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1.04,
+                    "yAccel": -3.02,
+                    "zAccel": 2.43,
+                    "modulus": 4.01
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.19,
+                    "yAccel": 0.12,
+                    "zAccel": -7.62,
+                    "modulus": 7.93
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": -1.89,
+                "yAccel": 7.76,
+                "zAccel": -8.81,
+                "modulus": 11.89
+            },
+            "crono": "0:6:1",
+            "date": "11/09, 15:17"
+        }
+    ],
+    [
+        2,
+        {
+            "id": 2,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": 1.79,
+                    "yAccel": -5.8,
+                    "zAccel": 6.23,
+                    "modulus": 8.7
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.91,
+                    "yAccel": -6.52,
+                    "zAccel": 9.95,
+                    "modulus": 12.05
+                },
+                {
+                    "side": "R",
+                    "xAccel": -3.03,
+                    "yAccel": 9.19,
+                    "zAccel": 1.45,
+                    "modulus": 9.78
+                },
+                {
+                    "side": "R",
+                    "xAccel": -6.35,
+                    "yAccel": -1.31,
+                    "zAccel": 0.89,
+                    "modulus": 6.54
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.34,
+                    "yAccel": 7.09,
+                    "zAccel": 9.77,
+                    "modulus": 12.08
+                },
+                {
+                    "side": "R",
+                    "xAccel": 4.4,
+                    "yAccel": -6.49,
+                    "zAccel": -4.44,
+                    "modulus": 9.01
+                },
+                {
+                    "side": "R",
+                    "xAccel": 5.69,
+                    "yAccel": -3.03,
+                    "zAccel": 0.04,
+                    "modulus": 6.45
+                },
+                {
+                    "side": "R",
+                    "xAccel": -7.67,
+                    "yAccel": -1.01,
+                    "zAccel": -2.69,
+                    "modulus": 8.19
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": -0.34,
+                "yAccel": 7.09,
+                "zAccel": 9.77,
+                "modulus": 12.08
+            },
+            "crono": "0:0:33",
+            "date": "11/09, 15:31"
+        }
+    ],
+    [
+        3,
+        {
+            "id": 3,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": 2.89,
+                    "yAccel": 8.06,
+                    "zAccel": 1.62,
+                    "modulus": 8.71
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.19,
+                    "yAccel": -11.62,
+                    "zAccel": 2.06,
+                    "modulus": 11.86
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.46,
+                    "yAccel": 11.93,
+                    "zAccel": -2.11,
+                    "modulus": 12.13
+                },
+                {
+                    "side": "R",
+                    "xAccel": 2.55,
+                    "yAccel": 18.69,
+                    "zAccel": -4.73,
+                    "modulus": 19.45
+                },
+                {
+                    "side": "R",
+                    "xAccel": 3.26,
+                    "yAccel": -4.66,
+                    "zAccel": -3.45,
+                    "modulus": 6.66
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1.48,
+                    "yAccel": -1.08,
+                    "zAccel": -3.9,
+                    "modulus": 4.31
+                },
+                {
+                    "side": "R",
+                    "xAccel": -5.1,
+                    "yAccel": 17.52,
+                    "zAccel": 8.59,
+                    "modulus": 20.17
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.83,
+                    "yAccel": -7.33,
+                    "zAccel": -11.94,
+                    "modulus": 14.04
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.83,
+                    "yAccel": -3.64,
+                    "zAccel": -6,
+                    "modulus": 7.06
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.26,
+                    "yAccel": 15.69,
+                    "zAccel": 9.42,
+                    "modulus": 18.79
+                },
+                {
+                    "side": "R",
+                    "xAccel": 5.45,
+                    "yAccel": -12.05,
+                    "zAccel": -1.6,
+                    "modulus": 13.33
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.55,
+                    "yAccel": 12.11,
+                    "zAccel": 9.09,
+                    "modulus": 15.81
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.8,
+                    "yAccel": 7.26,
+                    "zAccel": 8.94,
+                    "modulus": 11.55
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.87,
+                    "yAccel": -1.31,
+                    "zAccel": 4.81,
+                    "modulus": 5.06
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.18,
+                    "yAccel": -0.03,
+                    "zAccel": -6.62,
+                    "modulus": 6.63
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.64,
+                    "yAccel": -3.66,
+                    "zAccel": -7.46,
+                    "modulus": 8.33
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.48,
+                    "yAccel": -7.31,
+                    "zAccel": -4.38,
+                    "modulus": 8.53
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.88,
+                    "yAccel": 5.95,
+                    "zAccel": 3.07,
+                    "modulus": 6.76
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.77,
+                    "yAccel": -6.93,
+                    "zAccel": -5.01,
+                    "modulus": 8.59
+                },
+                {
+                    "side": "R",
+                    "xAccel": -11.89,
+                    "yAccel": 2.9,
+                    "zAccel": 1.44,
+                    "modulus": 12.32
+                },
+                {
+                    "side": "R",
+                    "xAccel": 9.53,
+                    "yAccel": 0.29,
+                    "zAccel": 6.15,
+                    "modulus": 11.35
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.59,
+                    "yAccel": -4.46,
+                    "zAccel": 12.75,
+                    "modulus": 14.27
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": -5.1,
+                "yAccel": 17.52,
+                "zAccel": 8.59,
+                "modulus": 20.17
+            },
+            "crono": "0:0:34",
+            "date": "11/09, 15:34"
+        }
+    ],
+    [
+        4,
+        {
+            "id": 4,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": 11.17,
+                    "yAccel": 9.17,
+                    "zAccel": -4.64,
+                    "modulus": 15.18
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1.45,
+                    "yAccel": 4.96,
+                    "zAccel": -0.75,
+                    "modulus": 5.22
+                },
+                {
+                    "side": "R",
+                    "xAccel": -3.87,
+                    "yAccel": 4.78,
+                    "zAccel": -3.53,
+                    "modulus": 7.09
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1.4,
+                    "yAccel": 13.4,
+                    "zAccel": -2.57,
+                    "modulus": 13.72
+                },
+                {
+                    "side": "R",
+                    "xAccel": -6.26,
+                    "yAccel": -7.03,
+                    "zAccel": 1.52,
+                    "modulus": 9.53
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.56,
+                    "yAccel": 17.11,
+                    "zAccel": -1.96,
+                    "modulus": 17.82
+                },
+                {
+                    "side": "R",
+                    "xAccel": 3.15,
+                    "yAccel": -2.02,
+                    "zAccel": 8.91,
+                    "modulus": 9.66
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.31,
+                    "yAccel": 11.3,
+                    "zAccel": -12.94,
+                    "modulus": 17.33
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.8,
+                    "yAccel": 1.06,
+                    "zAccel": 0.01,
+                    "modulus": 4.91
+                },
+                {
+                    "side": "R",
+                    "xAccel": 4.34,
+                    "yAccel": -2.28,
+                    "zAccel": 10.26,
+                    "modulus": 11.37
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.41,
+                    "yAccel": 14.75,
+                    "zAccel": -5.89,
+                    "modulus": 15.95
+                },
+                {
+                    "side": "R",
+                    "xAccel": 2.99,
+                    "yAccel": 10.76,
+                    "zAccel": -4.33,
+                    "modulus": 11.98
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.8,
+                    "yAccel": 17.49,
+                    "zAccel": -5.34,
+                    "modulus": 18.31
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.25,
+                    "yAccel": 4.85,
+                    "zAccel": -3.81,
+                    "modulus": 6.17
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.59,
+                    "yAccel": -7.02,
+                    "zAccel": 5.85,
+                    "modulus": 9.16
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": 0.8,
+                "yAccel": 17.49,
+                "zAccel": -5.34,
+                "modulus": 18.31
+            },
+            "crono": "0:0:59",
+            "date": "11/09, 15:34"
+        }
+    ],
+    [
+        5,
+        {
+            "id": 5,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": 2.58,
+                    "yAccel": 17.67,
+                    "zAccel": -3.59,
+                    "modulus": 18.21
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.59,
+                    "yAccel": 1.01,
+                    "zAccel": -5.14,
+                    "modulus": 5.47
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1.58,
+                    "yAccel": -0.9,
+                    "zAccel": 7.41,
+                    "modulus": 7.63
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1.72,
+                    "yAccel": -3.9,
+                    "zAccel": 4.45,
+                    "modulus": 6.16
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.05,
+                    "yAccel": 12.28,
+                    "zAccel": -21.86,
+                    "modulus": 25.07
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.25,
+                    "yAccel": 8.78,
+                    "zAccel": -3.58,
+                    "modulus": 9.75
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.63,
+                    "yAccel": 7,
+                    "zAccel": -5.36,
+                    "modulus": 8.84
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.04,
+                    "yAccel": 5.93,
+                    "zAccel": -7.09,
+                    "modulus": 9.46
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.21,
+                    "yAccel": 2.55,
+                    "zAccel": -3.87,
+                    "modulus": 4.64
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.45,
+                    "yAccel": -0.06,
+                    "zAccel": -4.89,
+                    "modulus": 5.1
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.95,
+                    "yAccel": 3.09,
+                    "zAccel": -9,
+                    "modulus": 9.57
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.35,
+                    "yAccel": 15.39,
+                    "zAccel": -10.59,
+                    "modulus": 18.83
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.67,
+                    "yAccel": 14.44,
+                    "zAccel": -2.92,
+                    "modulus": 14.83
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.71,
+                    "yAccel": 1.34,
+                    "zAccel": -5.04,
+                    "modulus": 5.49
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.57,
+                    "yAccel": 0.34,
+                    "zAccel": -6.61,
+                    "modulus": 6.8
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": -0.05,
+                "yAccel": 12.28,
+                "zAccel": -21.86,
+                "modulus": 25.07
+            },
+            "crono": "0:1:21",
+            "date": "11/09, 15:35"
+        }
+    ],
+    [
+        6,
+        {
+            "id": 6,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": -9.51,
+                    "yAccel": -9.32,
+                    "zAccel": 8.55,
+                    "modulus": 15.82
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.72,
+                    "yAccel": -14.59,
+                    "zAccel": 8.26,
+                    "modulus": 17.42
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1.54,
+                    "yAccel": 4.85,
+                    "zAccel": -8.24,
+                    "modulus": 9.68
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.97,
+                    "yAccel": -0.36,
+                    "zAccel": 8.86,
+                    "modulus": 8.92
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.61,
+                    "yAccel": -6.9,
+                    "zAccel": 7.46,
+                    "modulus": 10.5
+                },
+                {
+                    "side": "R",
+                    "xAccel": 2.22,
+                    "yAccel": 4.55,
+                    "zAccel": -5.82,
+                    "modulus": 7.71
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.98,
+                    "yAccel": 5.65,
+                    "zAccel": -6.87,
+                    "modulus": 9.11
+                },
+                {
+                    "side": "R",
+                    "xAccel": 2.63,
+                    "yAccel": -4.71,
+                    "zAccel": 1.86,
+                    "modulus": 5.7
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.1,
+                    "yAccel": 7.3,
+                    "zAccel": -5.86,
+                    "modulus": 9.42
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.65,
+                    "yAccel": 8.87,
+                    "zAccel": -3.55,
+                    "modulus": 9.57
+                },
+                {
+                    "side": "R",
+                    "xAccel": 4.52,
+                    "yAccel": -2.62,
+                    "zAccel": 3.31,
+                    "modulus": 6.19
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.78,
+                    "yAccel": 5.88,
+                    "zAccel": -4.91,
+                    "modulus": 8.15
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.53,
+                    "yAccel": -4.04,
+                    "zAccel": -1.36,
+                    "modulus": 4.53
+                },
+                {
+                    "side": "R",
+                    "xAccel": 4.46,
+                    "yAccel": -4.01,
+                    "zAccel": 2.32,
+                    "modulus": 6.43
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.45,
+                    "yAccel": 5.77,
+                    "zAccel": -8.33,
+                    "modulus": 10.24
+                },
+                {
+                    "side": "R",
+                    "xAccel": 4.75,
+                    "yAccel": -22.04,
+                    "zAccel": 10.58,
+                    "modulus": 24.9
+                },
+                {
+                    "side": "R",
+                    "xAccel": 2.18,
+                    "yAccel": 16.8,
+                    "zAccel": -9.88,
+                    "modulus": 19.62
+                },
+                {
+                    "side": "R",
+                    "xAccel": -5.54,
+                    "yAccel": 14.3,
+                    "zAccel": -3.17,
+                    "modulus": 15.67
+                },
+                {
+                    "side": "R",
+                    "xAccel": -6.9,
+                    "yAccel": -17.89,
+                    "zAccel": -1.01,
+                    "modulus": 19.2
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.58,
+                    "yAccel": -28.21,
+                    "zAccel": 8.34,
+                    "modulus": 29.77
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": -4.58,
+                "yAccel": -28.21,
+                "zAccel": 8.34,
+                "modulus": 29.77
+            },
+            "crono": "0:0:44",
+            "date": "11/09, 15:37"
+        }
+    ],
+    [
+        7,
+        {
+            "id": 7,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": -5.52,
+                    "yAccel": -0.25,
+                    "zAccel": -9.63,
+                    "modulus": 11.1
+                },
+                {
+                    "side": "R",
+                    "xAccel": 2.51,
+                    "yAccel": 13.16,
+                    "zAccel": -7.77,
+                    "modulus": 15.48
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.1,
+                    "yAccel": 10.3,
+                    "zAccel": 0.11,
+                    "modulus": 10.3
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.9,
+                    "yAccel": 10.86,
+                    "zAccel": -4.88,
+                    "modulus": 11.94
+                },
+                {
+                    "side": "R",
+                    "xAccel": -3.74,
+                    "yAccel": -2.26,
+                    "zAccel": 1.53,
+                    "modulus": 4.63
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.69,
+                    "yAccel": 5.62,
+                    "zAccel": -2.11,
+                    "modulus": 6.05
+                },
+                {
+                    "side": "R",
+                    "xAccel": -3.97,
+                    "yAccel": -15.95,
+                    "zAccel": 3.93,
+                    "modulus": 16.9
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.5,
+                    "yAccel": 2.43,
+                    "zAccel": -9.02,
+                    "modulus": 9.67
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.45,
+                    "yAccel": 2.11,
+                    "zAccel": -4.92,
+                    "modulus": 5.37
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.61,
+                    "yAccel": -15.22,
+                    "zAccel": 7.04,
+                    "modulus": 16.84
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.73,
+                    "yAccel": -13,
+                    "zAccel": 4.73,
+                    "modulus": 13.94
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.24,
+                    "yAccel": 14.95,
+                    "zAccel": -1.31,
+                    "modulus": 15.17
+                },
+                {
+                    "side": "R",
+                    "xAccel": 3.17,
+                    "yAccel": 10.27,
+                    "zAccel": 1.47,
+                    "modulus": 10.85
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.59,
+                    "yAccel": 1.13,
+                    "zAccel": 8.22,
+                    "modulus": 8.32
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.49,
+                    "yAccel": -15.32,
+                    "zAccel": -0.23,
+                    "modulus": 15.96
+                },
+                {
+                    "side": "R",
+                    "xAccel": 5.11,
+                    "yAccel": 14.03,
+                    "zAccel": 5.4,
+                    "modulus": 15.88
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.5,
+                    "yAccel": 3.43,
+                    "zAccel": -1.55,
+                    "modulus": 4.52
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": -3.97,
+                "yAccel": -15.95,
+                "zAccel": 3.93,
+                "modulus": 16.9
+            },
+            "crono": "0:0:30",
+            "date": "11/09, 15:37"
+        }
+    ],
+    [
+        8,
+        {
+            "id": 8,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": 4.1,
+                    "yAccel": 13.73,
+                    "zAccel": -3.34,
+                    "modulus": 14.71
+                },
+                {
+                    "side": "R",
+                    "xAccel": -6.86,
+                    "yAccel": -10.68,
+                    "zAccel": 1.51,
+                    "modulus": 12.79
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.61,
+                    "yAccel": 11.71,
+                    "zAccel": -4.45,
+                    "modulus": 12.55
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.48,
+                    "yAccel": -9.38,
+                    "zAccel": 1.13,
+                    "modulus": 10.45
+                },
+                {
+                    "side": "R",
+                    "xAccel": 2.2,
+                    "yAccel": 8.9,
+                    "zAccel": -0.58,
+                    "modulus": 9.18
+                },
+                {
+                    "side": "R",
+                    "xAccel": -3.85,
+                    "yAccel": 10.75,
+                    "zAccel": -5.89,
+                    "modulus": 12.85
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.19,
+                    "yAccel": 9.98,
+                    "zAccel": -5.62,
+                    "modulus": 11.51
+                },
+                {
+                    "side": "R",
+                    "xAccel": 3.03,
+                    "yAccel": 11.73,
+                    "zAccel": -1.04,
+                    "modulus": 12.16
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.22,
+                    "yAccel": 16.06,
+                    "zAccel": 0.98,
+                    "modulus": 16.09
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1.58,
+                    "yAccel": 9.79,
+                    "zAccel": -1.85,
+                    "modulus": 10.09
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.3,
+                    "yAccel": 8.87,
+                    "zAccel": -1.11,
+                    "modulus": 8.95
+                },
+                {
+                    "side": "R",
+                    "xAccel": 6.75,
+                    "yAccel": 0.62,
+                    "zAccel": 7.79,
+                    "modulus": 10.33
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.09,
+                    "yAccel": -8.17,
+                    "zAccel": 0.55,
+                    "modulus": 8.19
+                },
+                {
+                    "side": "R",
+                    "xAccel": -7.11,
+                    "yAccel": -14.63,
+                    "zAccel": -0.79,
+                    "modulus": 16.28
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.76,
+                    "yAccel": -6.22,
+                    "zAccel": 1.8,
+                    "modulus": 6.71
+                },
+                {
+                    "side": "R",
+                    "xAccel": -3.93,
+                    "yAccel": -10.22,
+                    "zAccel": -1.01,
+                    "modulus": 10.99
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.82,
+                    "yAccel": 15,
+                    "zAccel": -4.31,
+                    "modulus": 15.63
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": -7.11,
+                "yAccel": -14.63,
+                "zAccel": -0.79,
+                "modulus": 16.28
+            },
+            "crono": "0:1:13",
+            "date": "11/09, 15:40"
+        }
+    ],
+    [
+        9,
+        {
+            "id": 9,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": 6.48,
+                    "yAccel": -6.12,
+                    "zAccel": 7.71,
+                    "modulus": 11.79
+                },
+                {
+                    "side": "R",
+                    "xAccel": -5.58,
+                    "yAccel": -1.96,
+                    "zAccel": -9.12,
+                    "modulus": 10.87
+                },
+                {
+                    "side": "R",
+                    "xAccel": 3.68,
+                    "yAccel": 9.26,
+                    "zAccel": 2.61,
+                    "modulus": 10.3
+                },
+                {
+                    "side": "R",
+                    "xAccel": 7.23,
+                    "yAccel": 7.46,
+                    "zAccel": 9.64,
+                    "modulus": 14.17
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.2,
+                    "yAccel": 2.73,
+                    "zAccel": 4.94,
+                    "modulus": 5.65
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.42,
+                    "yAccel": 1.14,
+                    "zAccel": -4.57,
+                    "modulus": 4.73
+                },
+                {
+                    "side": "R",
+                    "xAccel": -9.3,
+                    "yAccel": -8.93,
+                    "zAccel": 1.52,
+                    "modulus": 12.98
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1.36,
+                    "yAccel": -4.82,
+                    "zAccel": 2.1,
+                    "modulus": 5.43
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.88,
+                    "yAccel": -4.64,
+                    "zAccel": 7.47,
+                    "modulus": 9.25
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.26,
+                    "yAccel": 6.43,
+                    "zAccel": -7.62,
+                    "modulus": 10.84
+                },
+                {
+                    "side": "R",
+                    "xAccel": -9.19,
+                    "yAccel": 1.45,
+                    "zAccel": -0.43,
+                    "modulus": 9.31
+                },
+                {
+                    "side": "R",
+                    "xAccel": -5.37,
+                    "yAccel": -2.53,
+                    "zAccel": -0.23,
+                    "modulus": 5.94
+                },
+                {
+                    "side": "R",
+                    "xAccel": -7.98,
+                    "yAccel": 9.35,
+                    "zAccel": 1.43,
+                    "modulus": 12.38
+                },
+                {
+                    "side": "R",
+                    "xAccel": 5.87,
+                    "yAccel": 7.65,
+                    "zAccel": 5.05,
+                    "modulus": 10.88
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.48,
+                    "yAccel": 2.27,
+                    "zAccel": 4.92,
+                    "modulus": 5.96
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.31,
+                    "yAccel": -5.81,
+                    "zAccel": -6.07,
+                    "modulus": 8.41
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.12,
+                    "yAccel": -4.01,
+                    "zAccel": -4.17,
+                    "modulus": 5.79
+                },
+                {
+                    "side": "R",
+                    "xAccel": -7.32,
+                    "yAccel": -5.16,
+                    "zAccel": 0.24,
+                    "modulus": 8.96
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.99,
+                    "yAccel": 1.01,
+                    "zAccel": -2.55,
+                    "modulus": 2.92
+                },
+                {
+                    "side": "R",
+                    "xAccel": 7,
+                    "yAccel": -1.23,
+                    "zAccel": 2.28,
+                    "modulus": 7.46
+                },
+                {
+                    "side": "R",
+                    "xAccel": -3.34,
+                    "yAccel": 1.34,
+                    "zAccel": -9.93,
+                    "modulus": 10.56
+                },
+                {
+                    "side": "R",
+                    "xAccel": -7.42,
+                    "yAccel": -2.89,
+                    "zAccel": 5.39,
+                    "modulus": 9.62
+                },
+                {
+                    "side": "R",
+                    "xAccel": 2.5,
+                    "yAccel": -9.8,
+                    "zAccel": -8.03,
+                    "modulus": 12.91
+                },
+                {
+                    "side": "R",
+                    "xAccel": -3.01,
+                    "yAccel": -8.13,
+                    "zAccel": -7.18,
+                    "modulus": 11.26
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.45,
+                    "yAccel": -4.12,
+                    "zAccel": 7.57,
+                    "modulus": 9.7
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.15,
+                    "yAccel": -7.87,
+                    "zAccel": 7.55,
+                    "modulus": 11.12
+                },
+                {
+                    "side": "R",
+                    "xAccel": -9.43,
+                    "yAccel": 3.59,
+                    "zAccel": 1.69,
+                    "modulus": 10.23
+                },
+                {
+                    "side": "R",
+                    "xAccel": -7.96,
+                    "yAccel": 1.93,
+                    "zAccel": -6.29,
+                    "modulus": 10.33
+                },
+                {
+                    "side": "R",
+                    "xAccel": 9.82,
+                    "yAccel": -6.48,
+                    "zAccel": 5.92,
+                    "modulus": 13.17
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.7,
+                    "yAccel": 0.63,
+                    "zAccel": -1.12,
+                    "modulus": 1.46
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1.7,
+                    "yAccel": -9.67,
+                    "zAccel": 3.62,
+                    "modulus": 10.46
+                },
+                {
+                    "side": "R",
+                    "xAccel": 9.83,
+                    "yAccel": -7.32,
+                    "zAccel": 3.7,
+                    "modulus": 12.8
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.47,
+                    "yAccel": 5.29,
+                    "zAccel": -8.23,
+                    "modulus": 9.89
+                },
+                {
+                    "side": "R",
+                    "xAccel": -6.15,
+                    "yAccel": -5.45,
+                    "zAccel": -5.91,
+                    "modulus": 10.12
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": 7.23,
+                "yAccel": 7.46,
+                "zAccel": 9.64,
+                "modulus": 14.17
+            },
+            "crono": "0:0:13",
+            "date": "11/09, 15:40"
+        }
+    ],
+    [
+        10,
+        {
+            "id": 10,
+            "readings": [
+                {
+                    "side": "R",
+                    "xAccel": 1.36,
+                    "yAccel": 10.08,
+                    "zAccel": 3.84,
+                    "modulus": 10.87
+                },
+                {
+                    "side": "R",
+                    "xAccel": 2.88,
+                    "yAccel": 3.68,
+                    "zAccel": -2.54,
+                    "modulus": 5.32
+                },
+                {
+                    "side": "R",
+                    "xAccel": 4.97,
+                    "yAccel": 10.87,
+                    "zAccel": -3.8,
+                    "modulus": 12.54
+                },
+                {
+                    "side": "R",
+                    "xAccel": -4.73,
+                    "yAccel": -11.6,
+                    "zAccel": 6.45,
+                    "modulus": 14.09
+                },
+                {
+                    "side": "R",
+                    "xAccel": 2.15,
+                    "yAccel": -2.18,
+                    "zAccel": 3.34,
+                    "modulus": 4.53
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.6,
+                    "yAccel": 2.56,
+                    "zAccel": -4.27,
+                    "modulus": 5.62
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.28,
+                    "yAccel": 3.09,
+                    "zAccel": -3.08,
+                    "modulus": 4.55
+                },
+                {
+                    "side": "R",
+                    "xAccel": -10.65,
+                    "yAccel": 12.34,
+                    "zAccel": -18.17,
+                    "modulus": 24.41
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.55,
+                    "yAccel": -2.24,
+                    "zAccel": 4.54,
+                    "modulus": 5.09
+                },
+                {
+                    "side": "R",
+                    "xAccel": -0.29,
+                    "yAccel": 4.03,
+                    "zAccel": -5.04,
+                    "modulus": 6.47
+                },
+                {
+                    "side": "R",
+                    "xAccel": 1,
+                    "yAccel": -2.82,
+                    "zAccel": -3.51,
+                    "modulus": 4.61
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.19,
+                    "yAccel": -3.43,
+                    "zAccel": 4.6,
+                    "modulus": 5.74
+                },
+                {
+                    "side": "R",
+                    "xAccel": 0.44,
+                    "yAccel": 7.02,
+                    "zAccel": -5.31,
+                    "modulus": 8.81
+                },
+                {
+                    "side": "R",
+                    "xAccel": -5,
+                    "yAccel": -15.24,
+                    "zAccel": 11.58,
+                    "modulus": 19.78
+                },
+                {
+                    "side": "R",
+                    "xAccel": -1.99,
+                    "yAccel": -13.08,
+                    "zAccel": 9.39,
+                    "modulus": 16.22
+                },
+                {
+                    "side": "R",
+                    "xAccel": -6.07,
+                    "yAccel": -12.29,
+                    "zAccel": 1.73,
+                    "modulus": 13.81
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.86,
+                    "yAccel": 17.42,
+                    "zAccel": -11.01,
+                    "modulus": 20.8
+                },
+                {
+                    "side": "R",
+                    "xAccel": -2.77,
+                    "yAccel": 14.89,
+                    "zAccel": -9.77,
+                    "modulus": 18.02
+                }
+            ],
+            "best": {
+                "side": "R",
+                "xAccel": -10.65,
+                "yAccel": 12.34,
+                "zAccel": -18.17,
+                "modulus": 24.41
+            },
+            "crono": "0:0:23",
+            "date": "11/09, 15:41"
+        }
+    ]
+]
