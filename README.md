@@ -10,6 +10,19 @@ docker run --name=svelte-shadowbox -p 4000:4000 sveltekit-shadowbox-dev
 add -d to the run command to launch the container in detached mode.
 open browser on localhost 4000
 
+Docker images assumes you are using the SSR target (with node)
+
+## Installing dependecies (embedded portion)
+see (embedded/README.md)[./embedded/README.md]
+
+## Installing dependecies (Sveltekit project)
+Using npm ci instead of npm install should ensure you get the exact versions specified in the lock file. npm install uses the semanthics of package.json instead
+```bash
+# inside the project folder
+npm ci
+```
+
+
 ## Type Checking
 To disable Type Checking with JSDOC edit the jsconfig.json file by setting the field checkJS to false
 
