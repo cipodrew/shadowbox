@@ -264,6 +264,7 @@
 					class="btn-neutral1"
 					onclick={(e) => {
 						readings = [];
+						time - 0;
 						startTraining(e);
 					}}>Start new session?</button
 				>
