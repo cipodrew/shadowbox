@@ -22,7 +22,7 @@ It should look something like this:
 It would be even better to inject these parameters in an even safer way, ideally at runtime.
 
 
-If you stil get errors related to wifi you may need to go to the directory in which Arduino IDE downloads libraries and chang a configuration option.
+If you stil get errors related to wifi you may need to go to the directory in which Arduino IDE downloads libraries and change a configuration option.
 Go to Arduino/libraries/mWebSockets/src and edit the file **"config.h"** 
 
 ```c
