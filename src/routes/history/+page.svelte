@@ -55,7 +55,6 @@
 				<div class="table-item table-header">ID</div>
 				<div class="table-item table-header">date</div>
 				<div class="table-item table-header">crono</div>
-				<!-- <div class="table-item">score</div> -->
 				<div class="table-item table-header">best</div>
 			</div>
 			{#if lastTenHistory}
@@ -67,7 +66,6 @@
 								{session.date}
 							</div>
 							<div class="table-item">{session.crono}</div>
-							<!-- <div class="table-item">score</div> -->
 							<div class="table-item">{session.best?.modulus}</div>
 							<button class="">-></button>
 						</div>
@@ -85,9 +83,8 @@
 								{session.date}
 							</div>
 							<div class="table-item">{session.crono}</div>
-							<!-- <div class="table-item">score</div> -->
 							<div class="table-item">{session.best?.modulus}</div>
-							<button class="">-></button>
+							<button class="">-&gt</button>
 						</div>
 					</a>
 				{/each}

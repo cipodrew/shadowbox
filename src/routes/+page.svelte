@@ -1,7 +1,4 @@
 <script>
-	//const test = "test"
-
-	import Button from '$lib/components/Button.svelte';
 </script>
 
 <svelte:head>

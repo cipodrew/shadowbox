@@ -1,5 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
 	import Crono from './Crono.svelte';
 	import WSdashboard from './WSdashboard.svelte';
 	import { saveSession } from './history';
@@ -81,18 +80,7 @@
 	/**
 	 * @type {Reading[]}
 	 */
-	//TODO: controllare se server funzione da passare a componente per fare push di readings o basta passare le reading direttamente
-	// let readings = $state(dummyData);
 	let readings = $state([]);
-	// let invertedReadings = $derived(readings.reverse);
-
-	// const READINGS_KEY = 'readings_key';
-	/*  save every single reading or only on training end? 
-	maybe save readings until training end for recovery and delete them on traning end
-	(on traning end we save the whole traning info) */
-	// $effect(function saveLocal() {
-	// 	localStorage.setItem(READINGS_KEY, JSON.stringify(readings));
-	// });
 
 	/**
 	 * @param {Reading} reading
@@ -128,11 +116,11 @@
 	}
 
 	let intercept = false;
-	onMount(() => {
-		return function cleanup() {
-			//TODO: any cleanup needed here
-		};
-	});
+	// onMount(() => {
+	// 	return function cleanup() {
+	// 		//TODO: any cleanup needed here
+	// 	};
+	// });
 
 	beforeNavigate(({ cancel }) => {
 		if (trainingStatus != 'in progress') {
@@ -149,7 +137,6 @@
 	});
 
 	function endTraning() {
-		//TODO:
 		trainingStatus = 'done';
 		saveTraning();
 	}
@@ -160,7 +147,7 @@
 		}
 		let crono = hours + ':' + minutes + ':' + seconds;
 		saveSession(readings, best, crono);
-	} //TODO:
+	}
 
 	//let canStart = $state(true);
 	let canStart = $state(false);
@@ -233,7 +220,7 @@
 		}
 	});
 
-	//transitions tweened
+	//tweened store to get a punchball effect on new best
 	const bestmodulus = tweened(0, {
 		duration: 500,
 		easing: cubicOut
@@ -329,7 +316,6 @@
 						<div class="reading-item">{reading.yAccel}</div>
 						<div class="reading-item">{reading.zAccel}</div>
 						<div class="reading-item">{Math.abs(i - readings.length)}</div>
-						<!--add number of reading? -->
 					</div>
 				{/each}
 			</div>
@@ -343,7 +329,6 @@
 		</div>
 	</main>
 	<div class="dashboard-footer">
-		<!-- Rate your tiredness <br /> -->
 		<div>Training status: <span>{trainingStatus}</span></div>
 		<Crono {time} {hours} {minutes} {seconds} text={'Time since session start:'} {trainingStatus}>
 			<button class="btn-neutral1" onclick={endTraning} disabled={trainingStatus != 'in progress'}
@@ -392,7 +377,6 @@
 	.readings-grid {
 		display: grid;
 		grid-auto-flow: row;
-		/*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
 		gap: 20px;
 
 		text-align: center;

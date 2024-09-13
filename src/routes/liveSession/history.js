@@ -9,8 +9,6 @@ import { HISTORY_KEY } from "$lib/constants";
  */
 export function saveSession(readings, best, crono,) {
 
-    //TODO: modal popup to rate performance?
-
     /**
      * @type {Map<number,import("$lib/myTypes").Training>}
      */

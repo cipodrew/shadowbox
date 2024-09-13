@@ -1,4 +1,3 @@
-<!-- <svelte:options runes={true} /> ATTENZIONE: non ideomatico, potrebbe creare problemi -->
 <script>
 	import '../app.css';
 	let { children } = $props();

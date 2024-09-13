@@ -101,7 +101,6 @@
 				zAccel: parseFloat(messageFields[4]),
 				modulus: parseFloat(messageFields[5])
 			});
-			//TODO: implement update logic to replace current best if needed
 		};
 	}
 </script>
