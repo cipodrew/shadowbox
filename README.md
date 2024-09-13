@@ -27,7 +27,7 @@ npm ci
 To disable Type Checking with JSDOC edit the jsconfig.json file by setting the field checkJS to false
 
 ---
-
+Made with
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
