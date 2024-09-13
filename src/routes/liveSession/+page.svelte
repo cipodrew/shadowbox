@@ -211,7 +211,7 @@
 	//---Crono
 	let time = $state(0);
 	let hours = $derived(Math.floor(time / (60 * 60)));
-	let minutes = $derived(Math.floor(time / 60));
+	let minutes = $derived(Math.floor(time / 60) % 60);
 	let seconds = $derived(time % 60);
 
 	let alreadyset = false;
