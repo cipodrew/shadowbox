@@ -17,6 +17,21 @@
 	function toggleReadings() {
 		isReadingsShown = !isReadingsShown;
 	}
+	let average = $derived.by(function average() {
+		let sum = 0;
+		let avg = 0;
+		if (session) {
+			let length = session?.readings.length;
+			for (let i = 0; i < length; i++) {
+				const currMod = session.readings[i].modulus;
+				sum += currMod;
+			}
+			if (length > 0) {
+				avg = sum / length;
+			}
+		}
+		return avg;
+	});
 </script>
 
 <svelte:head>
@@ -27,6 +42,7 @@
 		<h1>Session N°: {slug}</h1>
 		<div class="date">Completed on: {session?.date}</div>
 		<div class="stats">Total punches: {session?.readings.length}</div>
+		<div class="avg">Average modulus: {average.toFixed(2)}</div>
 		<div class="crono">Total time: {session?.crono}</div>
 	</section>
 	<h2>Best:</h2>
