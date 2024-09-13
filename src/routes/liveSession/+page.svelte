@@ -266,8 +266,6 @@
 				<div class="grid-best-header">yAccel</div>
 				<div class="grid-best-header">zAccel</div>
 			</div>
-			<!-- <div class="grid-best-item">punch N°</div> -->
-			<!-- <div class="best">{readings[findMax(readings)]}</div> -->
 
 			{#if best}
 				<div class="readings-row" out:scale={{ duration: 250 }} in:scale={{ duration: 250 }}>
@@ -306,7 +304,6 @@
 					</div>
 				{/if}
 				{#each readings.toReversed() as reading, i (reading)}
-					<!--					<li>{reading}</li> -->
 					<div class="readings-row" out:slide={{ duration: 250 }} in:slide={{ duration: 250 }}>
 						<div class="reading-item">
 							{reading.modulus}

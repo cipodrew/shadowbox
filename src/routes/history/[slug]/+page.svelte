@@ -52,8 +52,6 @@
 		<div class="grid-best-header">xAccel</div>
 		<div class="grid-best-header">yAccel</div>
 		<div class="grid-best-header">zAccel</div>
-		<!-- <div class="grid-best-item">punch N°</div> -->
-		<!-- <div class="best">{readings[findMax(readings)]}</div> -->
 
 		{#if session?.best}
 			<div></div>
@@ -62,7 +60,6 @@
 			<div class="best-item">{session.best.xAccel}</div>
 			<div class="best-item">{session.best.yAccel}</div>
 			<div class="best-item">{session.best.zAccel}</div>
-			<!-- <div class="best-item">{Math.abs(index - readings.length)}</div> -->
 		{/if}
 	</div>
 	{#if session?.best}
@@ -89,7 +86,6 @@
 			</div>
 			{#if session}
 				{#each session?.readings as reading, i (reading)}
-					<!--					<li>{reading}</li> -->
 					<div class="readings-row">
 						<div class="reading-item">
 							{reading.modulus}
@@ -99,7 +95,6 @@
 						<div class="reading-item">{reading.yAccel}</div>
 						<div class="reading-item">{reading.zAccel}</div>
 						<div class="reading-item">{Math.abs(i - session?.readings.length)}</div>
-						<!--add number of reading? -->
 					</div>
 				{/each}
 			{/if}
