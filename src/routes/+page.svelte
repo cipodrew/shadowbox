@@ -22,7 +22,7 @@
 			The name is a play on the term "shadow-boxe" which refers to a practice of training alone used
 			in boxing in which one tries to visualize an opponent.
 			<br />
-			This application is supposed to "shadow" your training and record each punch your throw by using
+			This application is supposed to "shadow" your training and record each punch you throw by using
 			a device located inside a "box" (and secured on your arm or wrist)
 		</section>
 	</div>
