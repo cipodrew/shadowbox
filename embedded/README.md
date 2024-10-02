@@ -36,8 +36,8 @@ Go to Arduino/libraries/mWebSockets/src and edit the file **"config.h"**
 |---------| -------|
 | GND | GND|
 | 3.3V | VCC |
-| A4 | SCL |
-| A5 | SDA | 
+| A4 | SDA |
+| A5 | SCL | 
 
 #### compile and upload
 You can connect your board and compile and upload the sketch
