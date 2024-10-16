@@ -22,27 +22,21 @@ Using npm ci instead of npm install should ensure you get the exact versions spe
 npm ci
 ```
 
-
 ## Type Checking
 To disable Type Checking with JSDOC edit the jsconfig.json file by setting the field checkJS to false
+
+## UI with Chart.js
+### live session screen
+![LiveSession](https://github.com/user-attachments/assets/732e7dce-31f5-4856-b3f0-805b59ecd960)
+
+### completed session screen
+![CompletedSession](https://github.com/user-attachments/assets/d2c33463-2edb-4807-ba30-9767ad31d145)
 
 ---
 Made with
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
 
 ## Developing
 
