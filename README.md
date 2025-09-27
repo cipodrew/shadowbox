@@ -1,3 +1,9 @@
+## Archived repository
+
+Since this is a completed academic project it has been marked as read-only
+
+---
+
 ## For reference:
 project started on Node 20.12.2
 
